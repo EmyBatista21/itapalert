@@ -1,60 +1,149 @@
+/* Estilos Padrão (Desktop First) */
+
 .header {
     background-color: #f8b467;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 1rem 2rem;
     font-family: Arial, sans-serif;
-  }
-  
-  .header-container {
+    position: sticky; /* Para manter o header visível ao rolar a página */
+    top: 0;
+    z-index: 1000;
+}
+ 
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-  }
-  
-  .logo {
+    position: relative; /* Necessário para posicionar o menu mobile */
+}
+
+/* Estilos do Logo */
+.logo {
     font-size: 1.5rem;
     font-weight: bold;
     color: #333;
     text-decoration: none;
-  }
+}
 
-  .logo img{
+.logo img {
     width: 220px;
     height: 75px;
-  }
-  
-  .nav ul {
+}
+ 
+/* Estilos da Navegação (Desktop) */
+.nav ul {
     list-style: none;
-    display: flex;
+    display: flex; /* Horizontal */
     margin: 0;
     padding: 0;
-  }
-  
-  .nav li {
+}
+ 
+.nav li {
     margin: 0 15px;
-  }
-  
-  .nav a {
+}
+ 
+.nav a {
     text-decoration: none;
     color: #555;
     font-weight: 500;
     padding: 0.5rem 0;
     border-bottom: 2px solid transparent;
-    transition: border-color 0.3s ease-in-out;
-  
-    &:hover {
-      color: #000;
-    }
-  }
-  
-  .nav a.active {
+    transition: border-color 0.3s ease-in-out, color 0.3s;
+}
+
+.nav a:hover {
+    color: #000;
+}
+ 
+.nav a.active {
     color: #000;
     border-bottom-color: #4a90e2; 
-  }
-  
-  .user-icon img {
+}
+ 
+/* Estilos do Ícone de Usuário */
+.user-icon img {
     width: 30px;
     height: 30px;
-  }
+}
+
+/* Oculta o botão hambúrguer no desktop */
+.menu-toggle {
+    display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- REGRAS DE RESPONSIVIDADE (MOBILE: max-width: 768px) --- */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 768px) {
+    
+    .header {
+        padding: 0.8rem 1rem; /* Reduz o padding no mobile */
+    }
+
+    /* Oculta o menu de navegação no mobile por padrão */
+    .nav {
+        display: none;
+        
+        /* Posicionamento absoluto para que o menu caia por baixo do header */
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 999; 
+    }
+
+    /* Estiliza o menu colapsado */
+    .nav ul {
+        flex-direction: column; /* Transforma a lista em vertical */
+        padding: 10px 0;
+        border-top: 1px solid #f0f0f0;
+    }
+
+    .nav li {
+        margin: 0;
+    }
+
+    .nav a {
+        padding: 12px 20px; /* Aumenta a área de clique */
+        border-bottom: none; /* Remove a linha de baixo */
+        transition: background-color 0.2s;
+    }
+
+    .nav a:hover, .nav a.active {
+        background-color: #f8f8f8;
+        color: #333;
+    }
+    
+    /* Exibe o botão hambúrguer no mobile */
+    .menu-toggle {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #333;
+        order: 2; /* Coloca o toggle entre o logo e o user-icon (opcional) */
+        margin-left: auto; /* Empurra para a direita se user-icon não estiver lá */
+        padding: 5px;
+    }
+
+    /* Regra para MOSTRAR o menu quando a classe 'nav-open' estiver ativa no container */
+    .header-container.nav-open .nav {
+        display: block;
+    }
+
+    /* Ajuste para alinhar o ícone de usuário no canto */
+    .user-icon {
+        order: 3; /* Garante que fique no final */
+        margin-left: 15px;
+    }
+
+    /* Ajuste no logo para centralizar a imagem dentro do padding reduzido */
+    .logo img {
+        width: 150px; /* Reduz o logo para telas menores */
+        height: auto;
+    }
+}

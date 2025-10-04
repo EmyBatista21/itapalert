@@ -1,0 +1,53 @@
+/* Estilos Padrão (Desktop/Telas Maiores) */
+.home-page-container {
+    display: flex;
+    height: calc(100vh - 60px); 
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 10px; 
+}
+
+app-map {
+    flex: 2; /* Ocupa 2/3 */
+    min-width: 60%; 
+}
+
+app-alerts-panel {
+    flex: 1; /* Ocupa 1/3 */
+    min-width: 300px; 
+}
+
+/* --- REGRAS DE RESPONSIVIDADE (MEDIA QUERY) --- */
+
+@media (max-width: 768px) {
+    
+    .home-page-container {
+        /* Muda o layout para uma coluna (Mapa e Painel ficam empilhados) */
+        flex-direction: column; 
+        
+        /* Permite a rolagem vertical de toda a página */
+        height: auto; 
+        overflow-y: auto;
+        overflow-x: hidden; 
+    }
+
+    app-map {
+        /* O mapa ocupa a largura total no topo */
+        width: 100%;
+        /* Define uma altura fixa para o mapa no celular para que ele não suma */
+        height: 300px; 
+        min-width: 100%; /* Garante largura total */
+        border-radius: 8px 8px 0 0;
+    }
+
+    app-alerts-panel {
+        /* O painel de alertas ocupa a largura total na parte de baixo */
+        width: 100%;
+        min-width: 100%; /* Garante largura total */
+        height: auto; /* Deixa o painel se expandir conforme o conteúdo */
+        border-left: none; /* Remove a linha divisória lateral */
+        border-top: 1px solid var(--border-light); /* Adiciona uma linha divisória superior */
+        border-radius: 0 0 8px 8px;
+    }
+}

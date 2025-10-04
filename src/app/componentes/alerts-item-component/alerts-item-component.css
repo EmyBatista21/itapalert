@@ -1,0 +1,88 @@
+/* src/app/components/alert-item/alert-item.component.css */
+
+.alert-card {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border-left: 5px solid; /* A cor do status/tipo será definida aqui */
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.2s, transform 0.1s;
+    cursor: pointer;
+}
+
+.alert-card:hover {
+    background-color: #f7f7f7;
+    transform: translateY(-2px);
+}
+
+/* Cores dinâmicas injetadas via [ngClass]="alert.iconClass" */
+
+.icon-danger { border-color: var(--status-open); }
+.icon-warning { border-color: var(--status-progress); }
+.icon-success { border-color: var(--status-resolved); }
+
+.alert-icon {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 15px;
+    /* A cor de fundo do ícone pode ser a mesma da border-left */
+    background-color: currentColor; 
+}
+.icon-danger .alert-icon { background-color: var(--status-open); }
+.icon-warning .alert-icon { background-color: var(--status-progress); }
+.icon-success .alert-icon { background-color: var(--status-resolved); }
+
+
+.alert-details {
+    flex-grow: 1;
+}
+
+.alert-details h4 {
+    margin: 0 0 4px 0;
+    font-size: 1.05em;
+    font-weight: 600;
+}
+
+.alert-details p {
+    margin: 0;
+    font-size: 0.85em;
+    color: var(--secondary-color);
+}
+
+/* Botão "Ver no mapa" é estilizado no styles.css global */
+.map-button {
+    margin-left: 15px;
+    white-space: nowrap; /* Impede que o texto quebre */
+}
+
+@media (max-width: 500px) {
+    .alert-card {
+        /* Permite que os elementos se empilhem se não houver espaço */
+        flex-wrap: wrap; 
+        padding: 10px;
+    }
+
+    .alert-details {
+        /* Permite que o texto ocupe a largura máxima se o botão se mover */
+        flex-basis: 100%; 
+        margin-left: 25px; /* Alinha o texto com o ícone */
+        margin-bottom: 10px;
+    }
+
+    .alert-icon {
+        /* Move o ícone para o canto para evitar conflito com o botão */
+        align-self: flex-start;
+    }
+
+    .map-button {
+        /* Faz o botão ocupar a largura total no final do card */
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        order: 3; /* Garante que o botão fique na parte de baixo do card */
+    }
+}

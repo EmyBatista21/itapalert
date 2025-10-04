@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.css */
+
+/* Definições de cores e variáveis globais */
+:root {
+    --primary-color: #007bff; /* Azul primário */
+    --secondary-color: #6c757d; /* Cinza secundário */
+    --background-light: #f8f9fa; /* Fundo claro */
+    --text-dark: #343a40; /* Texto escuro */
+    --border-light: #dee2e6;
+    
+    /* Cores de Status */
+    --status-open: #dc3545; /* Vermelho (Perigo/Aberto) */
+    --status-progress: #ffc107; /* Amarelo (Aviso/Em Andamento) */
+    --status-resolved: #28a745; /* Verde (Sucesso/Resolvido) */
+}
+
+/* Reset básico e tipografia */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+}
+
+/* Estilo para o botão "Ver no mapa" */
+.map-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 0.9em;
+}
+
+.map-button:hover {
+    background-color: #0056b3;
+}

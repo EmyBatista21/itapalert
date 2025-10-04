@@ -1,0 +1,53 @@
+/* src/app/components/alerts-panel/alerts-panel.component.css */
+
+.panel-container {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-left: 1px solid var(--border-light);
+}
+
+.panel-container h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-size: 1.5em;
+    border-bottom: 2px solid var(--border-light);
+    padding-bottom: 10px;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-tag {
+    background-color: var(--background-light);
+    color: var(--secondary-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border-light);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.filter-tag:hover {
+    background-color: var(--border-light);
+}
+
+.alerts-list {
+    flex-grow: 1; /* Faz a lista preencher o espaço restante */
+    overflow-y: auto; /* Habilita a rolagem apenas para a lista */
+    padding-right: 5px; /* Espaço para a barra de rolagem */
+}
+
+.alerts-list p {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-top: 30px;
+}

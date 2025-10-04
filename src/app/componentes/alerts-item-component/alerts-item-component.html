@@ -1,0 +1,10 @@
+<div class="alert-card" [ngClass]="alert.iconClass">
+    <div class="alert-icon"></div>
+    <div class="alert-details">
+        <h4>{{ alert.title }}</h4>
+        <p>{{ alert.neighborhood }} - {{ alert.status }}</p>
+    </div>
+    <button class="map-button" (click)="viewOnMap.emit(alert)">
+        Ver no mapa
+    </button>
+</div>

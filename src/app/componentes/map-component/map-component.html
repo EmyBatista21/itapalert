@@ -1,0 +1,10 @@
+<div class="map-container">
+    <div class="map-placeholder">
+        <p>A área de exibição do mapa está aqui.</p>
+        <p>A API do Google Maps não está ativa nesta versão.</p>
+    </div>
+
+    <div *ngIf="selectedAlert" class="map-highlight-info"> 
+        Alerta Selecionado: <strong>{{ selectedAlert.title }}</strong>
+    </div>
+</div>
