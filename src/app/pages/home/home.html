@@ -1,5 +1,10 @@
 <div class="home-page-container">
-    <app-map/> 
+    <!-- Passa os alertas e o alerta selecionado para o mapa -->
+    <app-map 
+      [alerts]="allAlerts"
+      [selectedAlert]="selectedAlertOnMap">
+    </app-map>
 
+    <!-- Painel de denúncias -->
     <app-alerts-panel (alertSelected)="onAlertSelected($event)"></app-alerts-panel>
 </div>

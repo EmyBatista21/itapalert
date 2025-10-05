@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
-import { CadastroAlertas } from "./pages/cadastro-alertas/cadastro-alertas";
 import { Home } from "./pages/home/home";
 import { ListarAlertas } from "./pages/listar-alertas/listar-alertas";
+import { CadastroAlertas } from "./componentes/cadastro-alertas/cadastro-alertas";
 
 export const routes: Routes = [
   // Rota para a Página Inicial

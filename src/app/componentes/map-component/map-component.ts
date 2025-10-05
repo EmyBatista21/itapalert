@@ -1,10 +1,11 @@
 // src/app/components/map/map.component.ts
-
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Alert } from '../../models/alert';
-import { CommonModule } from '@angular/common'; // <-- Novo Import
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-map',
+  standalone: true,
   imports: [CommonModule], 
   templateUrl: './map-component.html',
   styleUrl: './map-component.css'
@@ -14,14 +15,22 @@ export class MapComponent implements OnChanges {
   @Input() selectedAlert: Alert | null = null; // Alerta para destacar no mapa
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['selectedAlert'] && this.selectedAlert) {
-      console.log('Foco no mapa alterado para:', this.selectedAlert.title, ' em (', this.selectedAlert.latitude, ',', this.selectedAlert.longitude, ')');
-      // Lógica real: centralizar o mapa na latitude/longitude do selectedAlert e destacar o marcador
+    if (changes['alerts'] && this.alerts) {
+      console.log('🔄 Renderizando marcadores para alertas:', this.alerts);
+      // Aqui vai a lógica para adicionar marcadores no mapa (Google Maps ou outro)
     }
-    if (changes['alerts']) {
-      // Lógica real: Renderizar todos os marcadores no mapa
+
+    if (changes['selectedAlert'] && this.selectedAlert) {
+      console.log(
+        '📍 Centralizando no alerta:',
+        this.selectedAlert.title,
+        'em (',
+        (this.selectedAlert as any).latitude,
+        ',',
+        (this.selectedAlert as any).longitude,
+        ')'
+      );
+      // Aqui vai a lógica real de centralizar o mapa no alerta selecionado
     }
   }
-
-  // Lógica para renderizar marcadores baseada na lista de 'alerts'
 }

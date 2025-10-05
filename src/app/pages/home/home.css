@@ -1,7 +1,7 @@
 /* Estilos Padrão (Desktop/Telas Maiores) */
 .home-page-container {
     display: flex;
-    height: calc(100vh - 60px); 
+    height: calc(90vh - 60px); 
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 8px;

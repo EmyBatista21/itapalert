@@ -1,0 +1,38 @@
+<!-- src/app/pages/cadastro-alertas/cadastro-alertas.component.html -->
+<div class="page-container">
+  <div class="cadastro-container">
+    <h2>Cadastrar Novo Alerta</h2>
+
+    <form #alertForm="ngForm" (ngSubmit)="onSubmit(alertForm)">
+      <!-- Tipo de denúncia -->
+      <label for="type">Tipo de Denúncia:</label>
+      <select id="type" [(ngModel)]="newAlert.type" name="type" required>
+        <option value="Lixo">Lixo</option>
+        <option value="Poste Queimado">Poste Queimado</option>
+        <option value="Esgoto">Esgoto</option>
+        <option value="Buraco">Buraco</option>
+        <option value="Iluminação">Iluminação</option>
+        <option value="Outro">Outro</option>
+      </select>
+
+
+      <!-- Título -->
+      <label for="title">Título:</label>
+      <input type="text" id="title" [(ngModel)]="newAlert.title" name="title" required />
+
+      <!-- Descrição -->
+      <label for="description">Descrição:</label>
+      <textarea id="description" [(ngModel)]="newAlert.description" name="description" rows="4" required></textarea>
+
+      <!-- Local -->
+      <label for="location">Local:</label>
+      <input type="text" id="location" [(ngModel)]="newAlert.location" name="location" required />
+
+      <!-- Status fixo -->
+      <input type="hidden" [(ngModel)]="newAlert.status" name="status" value="Aberto" />
+
+      <button type="submit" [disabled]="alertForm.invalid">Cadastrar</button>
+    </form>
+
+  </div>
+</div>

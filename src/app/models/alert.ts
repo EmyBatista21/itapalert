@@ -1,13 +1,11 @@
-// src/app/models/alert.model.ts
-
+// src/app/models/alert.ts
 export interface Alert {
   id: number;
   title: string;
-  description: string;
-  type: 'Buraco' | 'Iluminação' | 'Lixo' | 'Outro'; // Exemplos de tipos
-  status: 'Aberto' | 'Em Andamento' | 'Resolvido';
-  neighborhood: string; // Bairro
-  latitude: number;
-  longitude: number;
-  iconClass: string; // Para o ícone visual na lista
+  description: string;           // Nova
+  type: '' | 'Lixo' | 'Poste Queimado' | 'Esgoto' | 'Buraco' | 'Iluminação' | 'Outro';
+  neighborhood: string;           // Bairro
+  location: string;               // Local do alerta
+  status: 'Aberto';               // Sempre Aberto
+  iconClass?: string;             // Opcional, para ícones visuais
 }
