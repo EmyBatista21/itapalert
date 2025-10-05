@@ -63,10 +63,12 @@
 }
  
 /* Estilos do Ícone de Usuário */
-.user-icon img {
-    width: 30px;
-    height: 30px;
+.user-icon i {
+  font-size: 1.8rem; /* aumenta o tamanho */
+  color: #333;       /* cor do ícone */
+  cursor: pointer;
 }
+
 
 /* Oculta o botão hambúrguer no desktop */
 .menu-toggle {
@@ -136,9 +138,9 @@
     }
 
     /* Ajuste para alinhar o ícone de usuário no canto */
-    .user-icon {
-        order: 3; /* Garante que fique no final */
+    .user-icon i{
         margin-left: 15px;
+        font-size: 1.5rem;
     }
 
     /* Ajuste no logo para centralizar a imagem dentro do padding reduzido */

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -16,5 +17,10 @@ export class Header {
   // Função para alternar o estado (abre/fecha)
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+  constructor(private auth: AuthService, private router: Router) {}
+  logout() {
+    this.auth.logout();          // limpa sessão
+    this.router.navigate(['/login']); // manda pra login
   }
 }
