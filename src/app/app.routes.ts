@@ -2,41 +2,44 @@ import { Routes } from "@angular/router";
 import { Home } from "./pages/home/home";
 import { ListarAlertas } from "./pages/listar-alertas/listar-alertas";
 import { CadastroAlertas } from "./componentes/cadastro-alertas/cadastro-alertas";
+import { LoginComponent } from "./pages/login/login/login";
+import { AuthGuard } from "./guards/auth.guard/auth.guard";
 
 export const routes: Routes = [
-  // Rota para a Página Inicial
+  // Página de Login
+  { path: 'login', component: LoginComponent },
+
+  // Página Inicial protegida
   {
     path: 'home',
-    // 2. Uso da propriedade 'component'
-    component: Home 
+    component: Home,
+    canActivate: [AuthGuard]   // só entra logado
   },
-  
-  // Rota para a Lista de Denúncias
+
+  // Lista de Denúncias (protegida)
   {
     path: 'denuncias',
-    component: ListarAlertas
+    component: ListarAlertas,
+    canActivate: [AuthGuard]
   },
-  
-  // Rota para o Formulário de Cadastro
+
+  // Cadastro de Denúncias (protegida)
   {
     path: 'cadastro',
-    component: CadastroAlertas
+    component: CadastroAlertas,
+    canActivate: [AuthGuard]
   },
 
-  // ---------------------------------------------
-  // ROTAS AUXILIARES
-  // ---------------------------------------------
-
-  // Rota Padrão: Redireciona a URL base (/) para /home
+  // Rota padrão -> redireciona para login
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
-  
-  // Rota Curinga: Redireciona para /home
+
+  // Rota curinga (sempre por último)
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'login'
   }
 ];
