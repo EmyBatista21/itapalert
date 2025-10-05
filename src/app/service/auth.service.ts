@@ -8,7 +8,9 @@ export class AuthService {
 
   login(username: string, password: string): boolean {
     const allowedUsers = [
-      { username: 'admin', password: '123456' }
+      { username: 'admin', password: '123456' },
+      { username: 'user', password: 'senha' }
+
     ];
 
     const user = allowedUsers.find(u => u.username === username && u.password === password);

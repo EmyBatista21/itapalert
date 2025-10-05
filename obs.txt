@@ -1,0 +1,4 @@
+Criar botão de logout
+Criar página para admin ver os alertas e mudar status
+Ativar mapa
+Dar um ícone pra cada tipo de alerta
