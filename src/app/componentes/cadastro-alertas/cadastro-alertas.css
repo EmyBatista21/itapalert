@@ -2,8 +2,11 @@
 .page-container {
   display: flex;
   justify-content: center;
-  padding: 40px 20px;
+  align-items: center;
+  min-height: calc(100vh - 120px); /* garante centralização vertical sem sobrepor o header/footer */
+  padding: 20px;
   background-color: #f0f2f5;
+  box-sizing: border-box;
 }
 
 .cadastro-container {
@@ -16,12 +19,14 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Título */
 .cadastro-container h2 {
   text-align: center;
   margin-bottom: 25px;
   color: #333;
 }
 
+/* Formulário */
 .cadastro-container form {
   display: flex;
   flex-direction: column;
@@ -43,6 +48,8 @@
   font-size: 16px;
   transition: border-color 0.3s, box-shadow 0.3s;
   resize: none;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .cadastro-container input:focus,
@@ -53,6 +60,7 @@
   outline: none;
 }
 
+/* Botão */
 .cadastro-container button {
   padding: 12px;
   background-color: #007bff;
@@ -67,4 +75,27 @@
 
 .cadastro-container button:hover {
   background-color: #0056b3;
+}
+
+/* Responsividade */
+@media (max-height: 700px) {
+  .page-container {
+    align-items: flex-start; /* Evita corte do formulário em telas muito baixas */
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .cadastro-container {
+    padding: 20px;
+  }
+
+  .cadastro-container h2 {
+    font-size: 18px;
+  }
+
+  .cadastro-container button {
+    font-size: 15px;
+    padding: 10px;
+  }
 }

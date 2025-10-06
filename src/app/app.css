@@ -1,0 +1,51 @@
+/* === CONFIGURAÇÃO GLOBAL DE LAYOUT === */
+
+/* Zera margens e define base flexível */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;          /* Centraliza tudo na vertical */
+    justify-content: flex-start;  /* Começa no topo, mas ajusta via media query */
+    background-color: #f7f7f7;    /* Cor de fundo global */
+    font-family: "Inter", Arial, sans-serif;
+  }
+  
+  /* O app inteiro é flex e centralizável */
+  app-root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza verticalmente */
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  /* Garante que todos os componentes filhos se comportem bem */
+  app-root > * {
+    width: 100%;
+    max-width: 1600px; /* Limite para telas ultrawide */
+    box-sizing: border-box;
+  }
+  
+  /* ===== TELAS ALTAS ===== */
+  @media (min-height: 900px) {
+    html, body, app-root {
+      justify-content: center; /* Centraliza verticalmente */
+      padding: 40px 0;
+    }
+  }
+  
+  /* ===== TELAS PEQUENAS (CELULARES/BAIXAS) ===== */
+  @media (max-width: 768px) {
+    html, body, app-root {
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 0;
+    }
+  }
+  
