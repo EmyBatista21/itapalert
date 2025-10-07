@@ -17,7 +17,7 @@
         <ng-container *ngIf="isLoggedIn()">
           <li><a routerLink="/home" routerLinkActive="active" (click)="toggleMenu()">Home</a></li>
           <li><a routerLink="/cadastroAlertas" routerLinkActive="active" (click)="toggleMenu()">Cadastro Alertas</a></li>
-          <li><a routerLink="/sobre-nos" routerLinkActive="active" (click)="toggleMenu()">Sobre Nós</a></li>
+          <li><a routerLink="/sobre" routerLinkActive="active" (click)="toggleMenu()">Sobre Nós</a></li>
 
           <!-- Logout -->
           <li class="logout-icon">
@@ -29,7 +29,7 @@
 
         <li *ngIf="!isLoggedIn()"><a routerLink="/login" routerLinkActive="active" (click)="toggleMenu()">Logar</a></li>
         <li *ngIf="!isLoggedIn()"><a routerLink="/cadastro" routerLinkActive="active" (click)="toggleMenu()">Cadastrar</a></li>
-        <li *ngIf="!isLoggedIn()"><a routerLink="/sobre-nos" routerLinkActive="active" (click)="toggleMenu()">Sobre Nós</a></li>
+        <li *ngIf="!isLoggedIn()"><a routerLink="/sobre" routerLinkActive="active" (click)="toggleMenu()">Sobre Nós</a></li>
       </ul>
     </nav>
 

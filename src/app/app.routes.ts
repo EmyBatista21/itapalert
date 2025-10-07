@@ -5,6 +5,7 @@ import { CadastroAlertas } from "./componentes/cadastro-alertas/cadastro-alertas
 import { LoginComponent } from "./pages/login/login/login";
 import { AuthGuard } from "./guards/auth.guard/auth.guard";
 import { Cadastro } from "./pages/cadastro/cadastro";
+import { Sobre } from "./pages/sobre/sobre";
 
 export const routes: Routes = [
   // Página de Login
@@ -30,6 +31,11 @@ export const routes: Routes = [
     path: 'cadastroAlertas',
     component: CadastroAlertas,
     canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'sobre',
+    component: Sobre,
   },
 
   // Rota padrão -> redireciona para login
