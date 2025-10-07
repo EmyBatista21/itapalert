@@ -1,24 +1,37 @@
 <header class="header">
   <div class="header-container" [class.nav-open]="isMenuOpen">
 
-    <a routerLink="/painel" class="logo"><img src="/imgs/logo.png" alt="Logo Itapa Alert"></a>
+    <!-- Logo -->
+    <a routerLink="/painel" class="logo">
+      <img src="/imgs/logo.png" alt="Logo Itapa Alert">
+    </a>
 
+    <!-- Botão menu mobile -->
     <div class="menu-toggle" (click)="toggleMenu()">
       &#9776;
     </div>
 
-    <nav class="nav">
+    <!-- Navegação -->
+    <nav class="nav" [class.open]="isMenuOpen">
       <ul>
-        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-        <!--<li><a routerLink="/denuncias" routerLinkActive="active">Denúncias</a></li>-->
-        <li><a routerLink="/cadastro" routerLinkActive="active">Cadastro Alertas</a></li>
-        <li><a routerLink="/sobre-nos" routerLinkActive="active">Sobre Nós</a></li>
+        <ng-container *ngIf="isLoggedIn()">
+          <li><a routerLink="/home" routerLinkActive="active" (click)="toggleMenu()">Home</a></li>
+          <li><a routerLink="/cadastroAlertas" routerLinkActive="active" (click)="toggleMenu()">Cadastro Alertas</a></li>
+          <li><a routerLink="/sobre-nos" routerLinkActive="active" (click)="toggleMenu()">Sobre Nós</a></li>
+
+          <!-- Logout -->
+          <li class="logout-icon">
+            <a (click)="logout(); toggleMenu()">
+              <i class="bi bi-box-arrow-right"></i>
+            </a>
+          </li>
+        </ng-container>
+
+        <li *ngIf="!isLoggedIn()"><a routerLink="/login" routerLinkActive="active" (click)="toggleMenu()">Logar</a></li>
+        <li *ngIf="!isLoggedIn()"><a routerLink="/cadastro" routerLinkActive="active" (click)="toggleMenu()">Cadastrar</a></li>
+        <li *ngIf="!isLoggedIn()"><a routerLink="/sobre-nos" routerLinkActive="active" (click)="toggleMenu()">Sobre Nós</a></li>
       </ul>
     </nav>
-
-    <div class="user-icon" (click)="logout()">
-      <i class="bi bi-box-arrow-right"></i>
-    </div>
 
   </div>
 </header>

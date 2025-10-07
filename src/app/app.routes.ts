@@ -4,11 +4,13 @@ import { ListarAlertas } from "./pages/listar-alertas/listar-alertas";
 import { CadastroAlertas } from "./componentes/cadastro-alertas/cadastro-alertas";
 import { LoginComponent } from "./pages/login/login/login";
 import { AuthGuard } from "./guards/auth.guard/auth.guard";
+import { Cadastro } from "./pages/cadastro/cadastro";
 
 export const routes: Routes = [
   // Página de Login
   { path: 'login', component: LoginComponent },
 
+  { path: 'cadastro', component: Cadastro },
   // Página Inicial protegida
   {
     path: 'home',
@@ -25,7 +27,7 @@ export const routes: Routes = [
 
   // Cadastro de Denúncias (protegida)
   {
-    path: 'cadastro',
+    path: 'cadastroAlertas',
     component: CadastroAlertas,
     canActivate: [AuthGuard]
   },

@@ -1,0 +1,89 @@
+/* Fundo da página no tom do cabeçalho */
+.register-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0d5bc;
+    min-height: 100vh;
+  }
+  
+  /* Card central */
+  .register-card {
+    background-color: #fff;
+    padding: 2.5rem 3rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+  }
+  
+  /* Título */
+  .title {
+    color: #004d40;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  /* Grupos do formulário */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+  
+  .form-group input {
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  
+  .form-group input:focus {
+    border-color: #f17d2b;
+  }
+  
+  /* Botão */
+  .btn-register {
+    width: 100%;
+    background-color: #f17d2b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-register:hover {
+    background-color: #e46d12;
+  }
+  
+  /* Rodapé do formulário */
+  .hint {
+    margin-top: 1rem;
+    color: #555;
+  }
+  
+  .link {
+    color: #f17d2b;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  

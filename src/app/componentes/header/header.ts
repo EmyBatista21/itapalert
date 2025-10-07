@@ -11,16 +11,23 @@ import { AuthService } from '../../service/auth.service';
   styleUrl: './header.css'    // Renomeado para seguir convenção
 })
 export class Header {
-  // Variável para controlar o estado do menu mobile
-  isMenuOpen: boolean = false; 
+  isMenuOpen = false;
 
-  // Função para alternar o estado (abre/fecha)
-  toggleMenu(): void {
+  constructor(private authService: AuthService, private router: Router) {}
+
+  // 🟢 FUNÇÃO CRUCIAL: Alterna o estado do menu
+  toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
-  constructor(private auth: AuthService, private router: Router) {}
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
   logout() {
-    this.auth.logout();          // limpa sessão
-    this.router.navigate(['/login']); // manda pra login
+    this.authService.logout();
+    this.router.navigate(['/login']);
+    // Fecha o menu após o logout
+    this.isMenuOpen = false; 
   }
 }

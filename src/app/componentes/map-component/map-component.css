@@ -27,6 +27,14 @@
     margin: 5px 0;
 }
 
+.api-disabled-message{
+    text-align: center;
+    color: #555;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 1rem;
+}
+
 .map-highlight-info {
     position: absolute;
     bottom: 20px;
