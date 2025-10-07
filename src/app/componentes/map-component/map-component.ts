@@ -7,7 +7,7 @@ import { SafeUrlPipe } from './safe-url.pipe';
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [CommonModule, SafeUrlPipe],
+  imports: [CommonModule],
   templateUrl: './map-component.html',
   styleUrls: ['./map-component.css'],
 })
