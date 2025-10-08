@@ -1,63 +1,91 @@
 <div class="register-page-container">
-    <div class="register-card">
-      <h2 class="title">Crie sua conta</h2>
-  
-      <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
-        <div class="form-group">
-          <label for="name">Nome completo</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            ngModel
-            required
-            placeholder="Digite seu nome completo"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="email">E-mail</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            ngModel
-            required
-            placeholder="Digite seu e-mail"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="password">Senha</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            ngModel
-            required
-            placeholder="Crie uma senha"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="confirmPassword">Confirmar senha</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            ngModel
-            required
-            placeholder="Confirme sua senha"
-          />
-        </div>
-  
-        <button type="submit" class="btn-register">Cadastrar</button>
-  
-        <p class="hint">
-          Já tem uma conta?
-          <a href="/login" routerLink="/login" class="link">Faça login</a>
-        </p>
-      </form>
+  <div class="register-card">
+    <h2 class="title">Crie sua conta</h2>
+
+    <form (ngSubmit)="openLGPDModal(registerForm)" #registerForm="ngForm">
+      <div class="form-group">
+        <label for="name">Nome completo</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          ngModel
+          required
+          placeholder="Digite seu nome completo"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          ngModel
+          required
+          placeholder="Digite seu e-mail"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          ngModel
+          required
+          placeholder="Crie uma senha"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirmar senha</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          ngModel
+          required
+          placeholder="Confirme sua senha"
+        />
+      </div>
+
+      <button type="submit" class="btn-register">Cadastrar</button>
+
+      <p class="hint">
+        Já tem uma conta?
+        <a href="/login" routerLink="/login" class="link">Faça login</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+<!-- 🌐 Modal LGPD -->
+<div class="modal-overlay" *ngIf="showLGPD">
+  <div class="modal-content">
+    <h3>Termos de Privacidade (LGPD)</h3>
+    <p>
+      Ao se cadastrar, você concorda com nossa Política de Privacidade e autoriza
+      o tratamento dos seus dados pessoais conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).
+      As informações coletadas serão utilizadas apenas para fins de autenticação
+      e comunicação interna, garantindo segurança e confidencialidade.
+    </p>
+
+    <label class="checkbox-label">
+      <input type="checkbox" [(ngModel)]="acceptedLGPD" name="acceptedLGPD" />
+      Li e aceito os termos da LGPD
+    </label>
+
+    <div class="modal-buttons">
+      <button class="btn-cancel" (click)="closeLGPDModal()">Cancelar</button>
+      <button
+        class="btn-accept"
+        [disabled]="!acceptedLGPD"
+        (click)="confirmLGPD(registerForm)"
+      >
+        Concordar e cadastrar
+      </button>
     </div>
   </div>
-  
+</div>

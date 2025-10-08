@@ -1,89 +1,170 @@
 /* Fundo da página no tom do cabeçalho */
 .register-page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0d5bc;
-    min-height: 100vh;
-  }
-  
-  /* Card central */
-  .register-card {
-    background-color: #fff;
-    padding: 2.5rem 3rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    width: 100%;
-    max-width: 420px;
-    text-align: center;
-  }
-  
-  /* Título */
-  .title {
-    color: #004d40;
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-  }
-  
-  /* Grupos do formulário */
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    margin-bottom: 1rem;
-  }
-  
-  .form-group label {
-    color: #333;
-    font-weight: 500;
-    margin-bottom: 0.3rem;
-  }
-  
-  .form-group input {
-    padding: 0.7rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  
-  .form-group input:focus {
-    border-color: #f17d2b;
-  }
-  
-  /* Botão */
-  .btn-register {
-    width: 100%;
-    background-color: #f17d2b;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 0.9rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-register:hover {
-    background-color: #e46d12;
-  }
-  
-  /* Rodapé do formulário */
-  .hint {
-    margin-top: 1rem;
-    color: #555;
-  }
-  
-  .link {
-    color: #f17d2b;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  .link:hover {
-    text-decoration: underline;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0d5bc;
+  min-height: 100vh;
+}
+
+/* Card central */
+.register-card {
+  background-color: #fff;
+  padding: 2.5rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+/* Título */
+.title {
+  color: #004d40;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* Grupos do formulário */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.form-group input {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #f17d2b;
+}
+
+/* Botão */
+.btn-register {
+  width: 100%;
+  background-color: #f17d2b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-register:hover {
+  background-color: #e46d12;
+}
+
+/* Rodapé do formulário */
+.hint {
+  margin-top: 1rem;
+  color: #555;
+}
+
+.link {
+  color: #f17d2b;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* ===================== */
+/* 🌐 MODAL LGPD */
+/* ===================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 480px;
+  text-align: left;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.modal-content h3 {
+  color: #004d40;
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  color: #333;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-cancel,
+.btn-accept {
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-cancel {
+  background-color: #ccc;
+  color: #333;
+}
+
+.btn-cancel:hover {
+  background-color: #bbb;
+}
+
+.btn-accept {
+  background-color: #f17d2b;
+  color: #fff;
+}
+
+.btn-accept:disabled {
+  background-color: #f6b88a;
+  cursor: not-allowed;
+}
+
+.btn-accept:hover:not(:disabled) {
+  background-color: #e46d12;
+}
