@@ -25,16 +25,16 @@ export class CadastroAlertas {
 
   // ✅ Lista dos tipos disponíveis (igual ao enum de `Alert`)
   alertTypes: string[] = [
-    'Lixo',
-    'Poste Queimado',
-    'Esgoto',
-    'Buraco',
-    'Iluminação',
     'Água acumulada',
-    'Terreno abandonado',
-    'Entulho',
-    'Barulho excessivo',
     'Animal abandonado',
+    'Barulho excessivo',
+    'Buraco',
+    'Entulho',
+    'Lixo',
+    'Esgoto',
+    'Iluminação',
+    'Poste Queimado',
+    'Terreno abandonado',
     'Outro'
   ];
 

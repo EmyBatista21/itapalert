@@ -4,33 +4,42 @@
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   font-family: Arial, sans-serif;
+  max-width: 100%;
+  overflow-x: auto; /* ✅ Evita quebra em telas pequenas */
 }
 
 h2 {
   margin-bottom: 16px;
   color: #333;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
+/* ======== TABELA PADRÃO ======== */
 .alerts-table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 0.95rem;
 }
 
 .alerts-table th, .alerts-table td {
   border-bottom: 1px solid #ddd;
-  padding: 8px 12px;
+  padding: 10px 12px;
   text-align: left;
+  vertical-align: middle;
 }
 
 .alerts-table th {
   background-color: #f5f5f5;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 select {
   padding: 6px 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
+  font-size: 0.9rem;
 }
 
 .delete-btn {
@@ -44,4 +53,80 @@ select {
 
 .delete-btn:hover {
   transform: scale(1.2);
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 900px) {
+  .alerts-table {
+    font-size: 0.85rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  select {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 700px) {
+  /* Torna a tabela rolável horizontalmente */
+  .manage-container {
+    padding: 16px;
+  }
+
+  .alerts-table th, .alerts-table td {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 550px) {
+  /* ✅ Layout estilo cards */
+  .alerts-table,
+  .alerts-table thead,
+  .alerts-table tbody,
+  .alerts-table th,
+  .alerts-table td,
+  .alerts-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .alerts-table thead {
+    display: none;
+  }
+
+  .alerts-table tr {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    padding: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .alerts-table td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+  }
+
+  .alerts-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #555;
+    flex: 1;
+    text-transform: capitalize;
+  }
+
+  .alerts-table td select {
+    width: 120px;
+  }
+
+  .delete-btn {
+    font-size: 20px;
+  }
 }

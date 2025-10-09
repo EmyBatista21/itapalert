@@ -14,20 +14,21 @@
     </thead>
     <tbody>
       <tr *ngFor="let alert of alerts">
-        <td>{{ alert.title }}</td>
-        <td>{{ alert.description }}</td>
-        <td>{{ alert.location }}</td>
-        <td>{{ alert.type }}</td>
-        <td>
+        <td data-label="Título">{{ alert.title }}</td>
+        <td data-label="Descrição">{{ alert.description }}</td>
+        <td data-label="Bairro">{{ alert.location }}</td>
+        <td data-label="Tipo">{{ alert.type }}</td>
+        <td data-label="Status">
           <select [(ngModel)]="alert.status" (change)="updateStatus(alert, alert.status)">
             <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
           </select>
         </td>
-        <td>
+        <td data-label="Ações">
           <button class="delete-btn" (click)="deleteAlert(alert.id)">🗑️</button>
         </td>
       </tr>
     </tbody>
+
   </table>
 
   <ng-template #noAlerts>

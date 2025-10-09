@@ -38,3 +38,12 @@ body {
 .map-button:hover {
     background-color: #0056b3;
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+

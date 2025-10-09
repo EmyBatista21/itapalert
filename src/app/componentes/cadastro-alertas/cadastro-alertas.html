@@ -7,9 +7,10 @@
       <!-- Tipo de denúncia -->
       <label for="type">Tipo de Denúncia:</label>
       <select id="type" [(ngModel)]="newAlert.type" name="type" required>
-        <option value="">Selecione o tipo</option>
-        <option *ngFor="let tipo of alertTypes" [value]="tipo">{{ tipo }}</option>
+        <option value="" disabled selected>Selecione o tipo</option>
+        <option *ngFor="let t of alertTypes" [value]="t">{{ t }}</option>
       </select>
+
 
 
       <!-- Título -->
