@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Alert } from '../../models/alert';
-import { AlertService } from '../../service/alert-service';
 import { AlertsItemComponent } from '../alerts-item-component/alerts-item-component';
 
 @Component({
@@ -13,61 +12,70 @@ import { AlertsItemComponent } from '../alerts-item-component/alerts-item-compon
 })
 export class AlertsPanelComponent implements OnInit {
   alerts: Alert[] = [];
-  filtros: any = {};
+  filtros: { [key: string]: string } = {};
   bairros: string[] = [];
   tipos: string[] = [];
   statusList: string[] = [];
-  latitude = 0;
-  longitude = 0;
-  deltaLat = 0.0010; // cada passo na latitude
-  deltaLng = 0.0030;
 
   @Output() alertSelected = new EventEmitter<{ lat: number; lng: number }>();
-
-  constructor(private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.loadAlerts();
     this.carregarOpcoesDeFiltros();
   }
 
-  /** 🔍 Carrega os alertas filtrados do serviço */
-  loadAlerts(filters: any = {}): void {
-    this.alertService.getFilteredAlerts(filters).subscribe((data) => {
-      this.alerts = data;
-      // NÃO emitimos alertSelected aqui, só ao clicar no botão
-    });
+  /** Carrega os alertas do localStorage aplicando filtros se existirem */
+  loadAlerts(filters: { [key: string]: string } = {}): void {
+    const storedAlerts = localStorage.getItem('alerts');
+    if (!storedAlerts) {
+      this.alerts = [];
+      return;
+    }
+
+    let allAlerts: Alert[] = JSON.parse(storedAlerts);
+
+    // Aplica filtros de forma segura
+    for (const key in filters) {
+      const filterValue = filters[key];
+      if (filterValue) {
+        allAlerts = allAlerts.filter(alert => (alert as any)[key] === filterValue);
+      }
+    }
+
+    this.alerts = allAlerts;
   }
 
-  /** 🧠 Lê todos os registros do localStorage e gera as opções únicas para os selects */
+  /** Gera as opções únicas para filtros */
   carregarOpcoesDeFiltros(): void {
     const storedAlerts = localStorage.getItem('alerts');
-    if (storedAlerts) {
-      const allAlerts: Alert[] = JSON.parse(storedAlerts);
+    if (!storedAlerts) return;
 
-      this.bairros = Array.from(new Set(allAlerts.map(a => a.location).filter(Boolean)));
-      this.tipos = Array.from(new Set(allAlerts.map(a => a.type).filter(Boolean)));
-      this.statusList = Array.from(new Set(allAlerts.map(a => a.status).filter(Boolean)));
-    }
+    const allAlerts: Alert[] = JSON.parse(storedAlerts);
+
+    this.bairros = Array.from(new Set(allAlerts.map(a => a.location).filter(Boolean)));
+    this.tipos = Array.from(new Set(allAlerts.map(a => a.type).filter(Boolean)));
+    this.statusList = Array.from(new Set(allAlerts.map(a => a.status).filter(Boolean)));
   }
 
-  /** 🔄 Quando o usuário muda um filtro */
+  /** Quando o usuário muda um filtro */
   onFilterChange(event: Event, field: string): void {
     const value = (event.target as HTMLSelectElement).value;
     this.applyFilter(field, value);
   }
 
-  /** 🔧 Aplica filtros e recarrega os dados */
+  /** Aplica filtro e recarrega os alertas */
   applyFilter(field: string, value: string): void {
     this.filtros[field] = value;
     this.loadAlerts(this.filtros);
   }
 
-  /** 📍 Evento repassado do AlertsItemComponent */
-  onViewOnMap(alert: any) {
-    // Para teste, sempre enviar coordenadas fixas
-    this.alertSelected.emit({ lat: -12.992387 + this.latitude , lng: -38.664135  + this.longitude});
-    this.latitude += this.deltaLat;
-    this.longitude += this.deltaLng;
+  /** Repassa para o mapa as coordenadas reais do alerta */
+  onViewOnMap(alerta: Alert): void {
+    if (alerta.lat != null && alerta.lng != null) {
+      this.alertSelected.emit({ lat: alerta.lat, lng: alerta.lng });
+    } else {
+      console.warn('Alerta sem coordenadas:', alerta);
+      alert('Este alerta não possui coordenadas válidas.');
+    }
   }
 }

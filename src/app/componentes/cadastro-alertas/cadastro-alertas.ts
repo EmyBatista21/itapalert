@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AlertService } from '../../service/alert-service';
 import { Alert } from '../../models/alert';
+import { MOCK_ALERTS } from '../../data/mockAlerts';
 
 @Component({
   selector: 'app-cadastro-alertas',
@@ -40,7 +41,7 @@ export class CadastroAlertas implements AfterViewInit {
     'Outro'
   ];
 
-  constructor(private alertService: AlertService) {}
+  constructor(private alertService: AlertService) { }
 
   ngAfterViewInit(): void {
     // Espera até a API do Google estar pronta
@@ -81,10 +82,10 @@ export class CadastroAlertas implements AfterViewInit {
   }
 
   onSubmit(form: NgForm) {
-    if (!this.newAlert.lat || !this.newAlert.lng) {
+    /*if (!this.newAlert.lat || !this.newAlert.lng) {
       alert('Por favor, selecione um bairro válido da lista de sugestões.');
       return;
-    }
+    }*/
 
     if (form.valid) {
       this.newAlert.id = Date.now();
@@ -104,4 +105,11 @@ export class CadastroAlertas implements AfterViewInit {
       alert('Por favor, preencha todos os campos corretamente.');
     }
   }
+
+  insertMockAlerts() {
+    // Salva todos os mocks no localStorage
+    localStorage.setItem('alerts', JSON.stringify(MOCK_ALERTS));
+    alert('20 alertas mock inseridos com sucesso!');
+  }
+
 }

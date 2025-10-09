@@ -27,7 +27,7 @@
 
       <!-- Status fixo -->
       <input type="hidden" [(ngModel)]="newAlert.status" name="status" value="Aberto" />
-
+      <button type="button" (click)="insertMockAlerts()">Inserir Mock</button>
       <button type="submit" [disabled]="alertForm.invalid">Cadastrar</button>
     </form>
   </div>

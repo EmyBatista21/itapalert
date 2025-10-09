@@ -4,10 +4,17 @@
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   font-family: Arial, sans-serif;
-  max-width: 100%;
-  overflow-x: auto; /* ✅ Evita quebra em telas pequenas */
+  width: 100%;
+  min-height: calc(100vh - 160px); /* Ajuste dinâmico: ocupa a tela menos header + footer */
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-x: auto;
 }
 
+/* ======== TÍTULO ======== */
 h2 {
   margin-bottom: 16px;
   color: #333;
@@ -15,14 +22,17 @@ h2 {
   font-size: 1.5rem;
 }
 
-/* ======== TABELA PADRÃO ======== */
+/* ======== TABELA ======== */
 .alerts-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
+  overflow-x: auto;
+  flex-grow: 1;
 }
 
-.alerts-table th, .alerts-table td {
+.alerts-table th,
+.alerts-table td {
   border-bottom: 1px solid #ddd;
   padding: 10px 12px;
   text-align: left;
@@ -55,12 +65,63 @@ select {
   transform: scale(1.2);
 }
 
+/* ======== PAGINAÇÃO ======== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto; /* empurra para o final */
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-bottom: 20px; /* evita encostar no footer */
+}
+
+.pagination button {
+  background-color: #f8b467;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  min-width: 100px;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #e19b4f;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 0.95rem;
+  color: #333;
+}
+
 /* ======== RESPONSIVIDADE ======== */
-@media (max-width: 900px) {
-  .alerts-table {
-    font-size: 0.85rem;
+
+/* Telas médias */
+@media (max-width: 1024px) {
+  .manage-container {
+    padding: 20px;
+    min-height: calc(100vh - 140px);
   }
 
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  .alerts-table {
+    font-size: 0.9rem;
+  }
+}
+
+/* Telas menores */
+@media (max-width: 900px) {
   h2 {
     font-size: 1.3rem;
   }
@@ -70,19 +131,26 @@ select {
   }
 }
 
+/* Smartphones médios */
 @media (max-width: 700px) {
-  /* Torna a tabela rolável horizontalmente */
   .manage-container {
     padding: 16px;
+    min-height: calc(100vh - 130px);
   }
 
-  .alerts-table th, .alerts-table td {
+  .alerts-table th,
+  .alerts-table td {
     padding: 8px;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 8px;
   }
 }
 
+/* Smartphones pequenos */
 @media (max-width: 550px) {
-  /* ✅ Layout estilo cards */
   .alerts-table,
   .alerts-table thead,
   .alerts-table tbody,
@@ -128,5 +196,31 @@ select {
 
   .delete-btn {
     font-size: 20px;
+  }
+
+  .pagination span {
+    font-size: 0.85rem;
+  }
+
+  .pagination button {
+    padding: 6px 10px;
+    min-width: 90px;
+  }
+}
+
+/* Telas muito altas (verticais longas) */
+@media screen and (min-height: 900px) {
+  .manage-container {
+    justify-content: flex-start;
+    min-height: calc(100vh - 150px);
+    padding-bottom: 60px;
+  }
+}
+
+/* Ultrawide (horizontal exagerada) */
+@media screen and (min-aspect-ratio: 21/9) {
+  .manage-container {
+    max-width: 80%;
+    margin: 0 auto;
   }
 }

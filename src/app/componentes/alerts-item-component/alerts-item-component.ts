@@ -1,18 +1,23 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Alert } from '../../models/alert'; // importa seu modelo
 
 @Component({
-  imports: [CommonModule], // ✅ adiciona CommonModule
+  imports: [CommonModule],
   selector: 'app-alerts-item-component',
   templateUrl: './alerts-item-component.html',
   styleUrls: ['./alerts-item-component.css']
 })
 export class AlertsItemComponent {
-  @Input() alert: any;
-  @Output() viewOnMap = new EventEmitter<{ lat: number; lng: number }>();
+  @Input() alert!: Alert; // tipo forte
+  @Output() viewOnMap = new EventEmitter<Alert>(); // envia o alerta completo
 
   onViewOnMap() {
-    // Coordenadas fixas de teste para a Ilha de Itaparica
-    this.viewOnMap.emit({ lat: -12.992387, lng: -38.664135 });
+    if (this.alert.lat != null && this.alert.lng != null) {
+      this.viewOnMap.emit(this.alert); // envia o alerta completo
+    } else {
+      console.warn('Alerta sem coordenadas:', this.alert);
+      alert('Este alerta não possui coordenadas válidas.');
+    }
   }
 }

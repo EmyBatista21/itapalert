@@ -1,7 +1,7 @@
 <div class="manage-container">
   <h2>Gerenciamento de Alertas</h2>
 
-  <table class="alerts-table" *ngIf="alerts.length > 0; else noAlerts">
+  <table class="alerts-table" *ngIf="pagedAlerts.length > 0; else noAlerts">
     <thead>
       <tr>
         <th>Título</th>
@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let alert of alerts">
+      <tr *ngFor="let alert of pagedAlerts">
         <td data-label="Título">{{ alert.title }}</td>
         <td data-label="Descrição">{{ alert.description }}</td>
         <td data-label="Bairro">{{ alert.location }}</td>
@@ -28,8 +28,14 @@
         </td>
       </tr>
     </tbody>
-
   </table>
+
+  <!-- Paginação -->
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">← Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Próxima →</button>
+  </div>
 
   <ng-template #noAlerts>
     <p>Nenhum alerta cadastrado.</p>
