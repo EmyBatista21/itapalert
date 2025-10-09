@@ -14,33 +14,46 @@ import { FormsModule } from '@angular/forms';
 })
 export class CadastroAlertas {
   newAlert: Alert = {
-  id: 0,
-  title: '',
-  description: '',
-  type: '', 
-  neighborhood: '',
-  location: '',
-  status: 'Aberto',
-  iconClass: 'alert-red'
-};
+    id: 0,
+    title: '',
+    description: '',
+    type: '',
+    location: '',
+    status: 'Aberto',
+    iconClass: 'alert-red'
+  };
 
+  // ✅ Lista dos tipos disponíveis (igual ao enum de `Alert`)
+  alertTypes: string[] = [
+    'Lixo',
+    'Poste Queimado',
+    'Esgoto',
+    'Buraco',
+    'Iluminação',
+    'Água acumulada',
+    'Terreno abandonado',
+    'Entulho',
+    'Barulho excessivo',
+    'Animal abandonado',
+    'Outro'
+  ];
 
-  constructor(private alertService: AlertService) { }
+  constructor(private alertService: AlertService) {}
 
   onSubmit(form: any) {
-  if (form.valid) {
-    this.newAlert.id = Date.now();
-    this.alertService.addAlert(this.newAlert);
-    alert('Alerta cadastrado com sucesso!');
+    if (form.valid) {
+      this.newAlert.id = Date.now();
+      this.alertService.addAlert(this.newAlert);
+      alert('Alerta cadastrado com sucesso!');
 
-    // Reset do form e do model
-    form.resetForm({
-      type: 'Roubo',
-      status: 'Aberto',
-      iconClass: 'alert-red'
-    });
-  } else {
-    alert('Por favor, preencha todos os campos corretamente.');
+      // Reset do formulário e modelo
+      form.resetForm({
+        type: '',
+        status: 'Aberto',
+        iconClass: 'alert-red'
+      });
+    } else {
+      alert('Por favor, preencha todos os campos corretamente.');
+    }
   }
-}
 }

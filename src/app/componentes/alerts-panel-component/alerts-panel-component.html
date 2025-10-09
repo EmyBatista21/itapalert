@@ -1,19 +1,39 @@
 <div class="panel-container">
-      <h2>Painel de Denúncias</h2>
+  <h2>Painel de Denúncias</h2>
 
-      <div class="filters">
-        <span class="filter-tag">Bairro</span>
-        <span class="filter-tag">Tipo</span>
-        <span class="filter-tag">Status</span>
-      </div>
-
-      <div class="alerts-list">
-        <app-alerts-item-component
-          *ngFor="let alert of alerts"
-          [alert]="alert"
-          (viewOnMap)="onViewOnMap($event)"
-        ></app-alerts-item-component>
-
-        <p *ngIf="alerts.length === 0">Nenhum alerta encontrado com os filtros.</p>
-      </div>
+  <div class="filters">
+    <div class="filter-group">
+      <label>Bairro:</label>
+      <select (change)="onFilterChange($event, 'location')">
+        <option value="">Todos</option>
+        <option *ngFor="let bairro of bairros" [value]="bairro">{{ bairro }}</option>
+      </select>
     </div>
+
+    <div class="filter-group">
+      <label>Tipo:</label>
+      <select (change)="onFilterChange($event, 'type')">
+        <option value="">Todos</option>
+        <option *ngFor="let tipo of tipos" [value]="tipo">{{ tipo }}</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>Status:</label>
+      <select (change)="onFilterChange($event, 'status')">
+        <option value="">Todos</option>
+        <option *ngFor="let status of statusList" [value]="status">{{ status }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="alerts-list">
+    <app-alerts-item-component
+      *ngFor="let alert of alerts"
+      [alert]="alert"
+      (viewOnMap)="onViewOnMap(alert)">
+    </app-alerts-item-component>
+
+    <p *ngIf="alerts.length === 0">Nenhum alerta encontrado com os filtros.</p>
+  </div>
+</div>

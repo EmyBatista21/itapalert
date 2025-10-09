@@ -1,6 +1,5 @@
-// src/app/service/alert-service.ts
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Alert } from '../models/alert';
 
 @Injectable({
@@ -21,16 +20,34 @@ export class AlertService {
     localStorage.setItem(this.storageKey, JSON.stringify(alerts));
   }
 
-  // 🔹 Método usado pelo AlertsPanel com filtros
+  /** 
+   * 🔹 Retorna os alertas filtrados com base nos campos enviados
+   * Exemplo de filtros: { bairro: 'Centro', tipo: '', status: 'pendente' }
+   */
   getFilteredAlerts(filters: any = {}): Observable<Alert[]> {
-    return this.alerts$.asObservable();
-  }
+  const all = this.loadFromStorage();
 
-  // 🔹 Método usado pelo HomeComponent
+  const filtered = all.filter(alert => {
+    const matchLocation =
+      !filters.location || alert.location.toLowerCase() === filters.location.toLowerCase();
+    const matchType =
+      !filters.type || alert.type.toLowerCase() === filters.type.toLowerCase();
+    const matchStatus =
+      !filters.status || alert.status.toLowerCase() === filters.status.toLowerCase();
+    return matchLocation && matchType && matchStatus;
+  });
+
+  this.alerts$.next(filtered);
+  return this.alerts$.asObservable();
+}
+
+
+  /** 🔹 Retorna todos os alertas (sem filtros) */
   getAllAlerts(): Observable<Alert[]> {
     return this.alerts$.asObservable();
   }
 
+  /** 🔹 Adiciona um novo alerta */
   addAlert(alert: Alert) {
     const current = this.alerts$.value;
     const newAlert = { ...alert, id: current.length + 1 };

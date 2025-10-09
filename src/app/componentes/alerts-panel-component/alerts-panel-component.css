@@ -1,53 +1,82 @@
-/* src/app/components/alerts-panel/alerts-panel.component.css */
-
 .panel-container {
-    background-color: #fff;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    border-left: 1px solid var(--border-light);
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
+/* Título */
 .panel-container h2 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    color: var(--primary-color);
-    font-size: 1.5em;
-    border-bottom: 2px solid var(--border-light);
-    padding-bottom: 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1d3557; /* Azul escuro profissional */
+  margin-bottom: 10px;
 }
 
+/* Filtros */
 .filters {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
 }
 
-.filter-tag {
-    background-color: var(--background-light);
-    color: var(--secondary-color);
-    padding: 6px 12px;
-    border-radius: 20px;
-    border: 1px solid var(--border-light);
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 0.85em;
-    font-weight: bold;
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 150px;
 }
 
-.filter-tag:hover {
-    background-color: var(--border-light);
+.filter-group label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #333;
 }
 
+select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+select:focus {
+  border-color: #457b9d;
+  box-shadow: 0 0 4px rgba(69, 123, 157, 0.5);
+  outline: none;
+  background-color: #fff;
+}
+
+/* Lista de alertas */
 .alerts-list {
-    flex-grow: 1; /* Faz a lista preencher o espaço restante */
-    overflow-y: auto; /* Habilita a rolagem apenas para a lista */
-    padding-right: 5px; /* Espaço para a barra de rolagem */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .alerts-list p {
-    text-align: center;
-    color: var(--secondary-color);
-    margin-top: 30px;
+  color: #777;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
 }

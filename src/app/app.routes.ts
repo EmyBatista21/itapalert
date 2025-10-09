@@ -6,6 +6,7 @@ import { LoginComponent } from "./pages/login/login/login";
 import { AuthGuard } from "./guards/auth.guard/auth.guard";
 import { Cadastro } from "./pages/cadastro/cadastro";
 import { Sobre } from "./pages/sobre/sobre";
+import { ManageAlertsComponent } from "./pages/manage-alerts/manage-alerts";
 
 export const routes: Routes = [
   // Página de Login
@@ -23,6 +24,12 @@ export const routes: Routes = [
   {
     path: 'denuncias',
     component: ListarAlertas,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'atualizar',
+    component: ManageAlertsComponent,
     canActivate: [AuthGuard]
   },
 

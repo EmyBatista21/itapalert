@@ -1,0 +1,36 @@
+<div class="manage-container">
+  <h2>Gerenciamento de Alertas</h2>
+
+  <table class="alerts-table" *ngIf="alerts.length > 0; else noAlerts">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Bairro</th>
+        <th>Tipo</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alert of alerts">
+        <td>{{ alert.title }}</td>
+        <td>{{ alert.description }}</td>
+        <td>{{ alert.location }}</td>
+        <td>{{ alert.type }}</td>
+        <td>
+          <select [(ngModel)]="alert.status" (change)="updateStatus(alert, alert.status)">
+            <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+          </select>
+        </td>
+        <td>
+          <button class="delete-btn" (click)="deleteAlert(alert.id)">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noAlerts>
+    <p>Nenhum alerta cadastrado.</p>
+  </ng-template>
+</div>

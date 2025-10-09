@@ -17,8 +17,8 @@
         <ng-container *ngIf="isLoggedIn()">
           <li><a routerLink="/home" routerLinkActive="active" (click)="toggleMenu()">Home</a></li>
           <li><a routerLink="/cadastroAlertas" routerLinkActive="active" (click)="toggleMenu()">Cadastro Alertas</a></li>
+          <li><a routerLink="/atualizar" routerLinkActive="active" (click)="toggleMenu()">Atualizar</a></li>
           <li><a routerLink="/sobre" routerLinkActive="active" (click)="toggleMenu()">Sobre Nós</a></li>
-
           <!-- Logout -->
           <li class="logout-icon">
             <a (click)="logout(); toggleMenu()">
