@@ -3,12 +3,13 @@ import { RouterOutlet } from '@angular/router';
 import { Header } from './componentes/header/header';
 import { Footer } from './componentes/footer/footer';
 import { NgIf } from '@angular/common';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Header, Footer],
+  imports: [RouterOutlet, Header, Footer, GoogleMapsModule],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

@@ -45,4 +45,6 @@ export interface Alert {
   status: 'Aberto';
 
   iconClass?: string; // Opcional: ícone visual correspondente
+  lat?: number;
+  lng?: number;
 }

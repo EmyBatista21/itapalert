@@ -26,7 +26,10 @@ export class Home implements OnInit {
   }
 
   // 🔹 Recebe o evento do painel quando o usuário clica em "Ver no mapa"
-  onAlertSelected(alert: Alert): void {
-    this.selectedAlertOnMap = alert;
-  }
+  selectedLocation: { lat: number; lng: number } | null = null;
+
+onAlertSelected(coords: { lat: number; lng: number }) {
+  this.selectedLocation = coords;
+}
+
 }

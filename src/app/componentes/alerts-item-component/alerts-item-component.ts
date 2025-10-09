@@ -1,15 +1,18 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Alert } from '../../models/alert';
-import { CommonModule } from '@angular/common'; // <-- 1. Importar CommonModule
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
+  imports: [CommonModule], // ✅ adiciona CommonModule
   selector: 'app-alerts-item-component',
-  imports: [CommonModule],
   templateUrl: './alerts-item-component.html',
-  styleUrl: './alerts-item-component.css'
+  styleUrls: ['./alerts-item-component.css']
 })
 export class AlertsItemComponent {
-    @Input() alert!: Alert;
-  // O Output permite que o componente pai reaja ao clique do botão
-  @Output() viewOnMap = new EventEmitter<Alert>();
+  @Input() alert: any;
+  @Output() viewOnMap = new EventEmitter<{ lat: number; lng: number }>();
+
+  onViewOnMap() {
+    // Coordenadas fixas de teste para a Ilha de Itaparica
+    this.viewOnMap.emit({ lat: -12.992387, lng: -38.664135 });
+  }
 }

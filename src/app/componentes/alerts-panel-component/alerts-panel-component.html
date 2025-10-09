@@ -31,9 +31,7 @@
     <app-alerts-item-component
       *ngFor="let alert of alerts"
       [alert]="alert"
-      (viewOnMap)="onViewOnMap(alert)">
+      (viewOnMap)="onViewOnMap($event)">
     </app-alerts-item-component>
-
-    <p *ngIf="alerts.length === 0">Nenhum alerta encontrado com os filtros.</p>
   </div>
 </div>

@@ -17,8 +17,12 @@ export class AlertsPanelComponent implements OnInit {
   bairros: string[] = [];
   tipos: string[] = [];
   statusList: string[] = [];
+  latitude = 0;
+  longitude = 0;
+  deltaLat = 0.0010; // cada passo na latitude
+  deltaLng = 0.0030;
 
-  @Output() alertSelected = new EventEmitter<Alert>();
+  @Output() alertSelected = new EventEmitter<{ lat: number; lng: number }>();
 
   constructor(private alertService: AlertService) {}
 
@@ -31,7 +35,7 @@ export class AlertsPanelComponent implements OnInit {
   loadAlerts(filters: any = {}): void {
     this.alertService.getFilteredAlerts(filters).subscribe((data) => {
       this.alerts = data;
-      this.alertSelected.emit();
+      // NÃO emitimos alertSelected aqui, só ao clicar no botão
     });
   }
 
@@ -41,7 +45,6 @@ export class AlertsPanelComponent implements OnInit {
     if (storedAlerts) {
       const allAlerts: Alert[] = JSON.parse(storedAlerts);
 
-      // gera listas únicas dinamicamente
       this.bairros = Array.from(new Set(allAlerts.map(a => a.location).filter(Boolean)));
       this.tipos = Array.from(new Set(allAlerts.map(a => a.type).filter(Boolean)));
       this.statusList = Array.from(new Set(allAlerts.map(a => a.status).filter(Boolean)));
@@ -60,8 +63,11 @@ export class AlertsPanelComponent implements OnInit {
     this.loadAlerts(this.filtros);
   }
 
-  /** 📍 Evento de seleção de alerta */
-  onViewOnMap(alert: Alert): void {
-    this.alertSelected.emit(alert);
+  /** 📍 Evento repassado do AlertsItemComponent */
+  onViewOnMap(alert: any) {
+    // Para teste, sempre enviar coordenadas fixas
+    this.alertSelected.emit({ lat: -12.992387 + this.latitude , lng: -38.664135  + this.longitude});
+    this.latitude += this.deltaLat;
+    this.longitude += this.deltaLng;
   }
 }

@@ -47,3 +47,14 @@ html, body {
 
 
 
+/* ==== Correção global do Leaflet ==== */
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+}
+
+.leaflet-container img {
+  max-width: none !important;
+  image-rendering: auto !important;
+}

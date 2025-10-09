@@ -7,6 +7,7 @@ import { AuthGuard } from "./guards/auth.guard/auth.guard";
 import { Cadastro } from "./pages/cadastro/cadastro";
 import { Sobre } from "./pages/sobre/sobre";
 import { ManageAlertsComponent } from "./pages/manage-alerts/manage-alerts";
+import { MapComponent } from "./componentes/map-component/map-component";
 
 export const routes: Routes = [
   // Página de Login
@@ -24,6 +25,12 @@ export const routes: Routes = [
   {
     path: 'denuncias',
     component: ListarAlertas,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'map',
+    component: MapComponent,
     canActivate: [AuthGuard]
   },
 

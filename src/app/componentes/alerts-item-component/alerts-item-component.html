@@ -1,10 +1,10 @@
 <div class="alert-card" [ngClass]="alert.iconClass">
-    <div class="alert-icon"></div>
-    <div class="alert-details">
-        <h4>{{ alert.type }}</h4>
-        <p>{{ alert.location }} - {{ alert.status }}</p>
-    </div>
-    <button class="map-button" (click)="viewOnMap.emit(alert)">
-        Ver no mapa
-    </button>
+  <div class="alert-icon"></div>
+  <div class="alert-details">
+    <h4>{{ alert.type }}</h4>
+    <p>{{ alert.location }} - {{ alert.status }}</p>
+  </div>
+  <button class="map-button" (click)="onViewOnMap()">
+    Ver no mapa
+  </button>
 </div>
