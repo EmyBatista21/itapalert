@@ -19,6 +19,7 @@
 
 /* Título */
 .title {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #004d40;
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
