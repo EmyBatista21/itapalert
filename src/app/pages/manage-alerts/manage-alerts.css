@@ -162,7 +162,7 @@ select {
   .alerts-table th:nth-child(5),
   .alerts-table td:nth-child(5) { width: 10%; }
   .alerts-table th:nth-child(6),
-  .alerts-table td:nth-child(6) { width: 5%; }
+  .alerts-table td:nth-child(6) { width: 10%; }
 
   /* Ocultar colunas menos importantes para telas pequenas */
   .alerts-table th:nth-child(4),
