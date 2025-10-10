@@ -24,8 +24,8 @@ export class CadastroAlertas implements AfterViewInit {
     location: '',
     status: 'Aberto',
     iconClass: 'alert-red',
-    lat: 0,
-    lng: 0
+    lat: -12.991415,
+    lng: -38.659188
   };
 
   alertTypes: string[] = [
@@ -90,8 +90,8 @@ export class CadastroAlertas implements AfterViewInit {
         this.newAlert.lng = place.geometry.location.lng();
         this.newAlert.location = place.name || place.formatted_address || '';
       } else {
-        this.newAlert.lat = 0;
-        this.newAlert.lng = 0;
+        this.newAlert.lat =  -12.991415;
+        this.newAlert.lng = -38.659188;
         this.newAlert.location = '';
         alert('Selecione um bairro válido da lista de sugestões.');
       }
@@ -116,8 +116,8 @@ export class CadastroAlertas implements AfterViewInit {
         location: ''
       });
 
-      this.newAlert.lat = 0;
-      this.newAlert.lng = 0;
+      this.newAlert.lat =  -12.991415;
+      this.newAlert.lng = -38.659188;
     } else {
       alert('Por favor, preencha todos os campos corretamente.');
     }

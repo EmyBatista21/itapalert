@@ -10,8 +10,8 @@ export const MOCK_ALERTS: Alert[] = [
     location: 'Barra do Gil',
     status: 'Aberto',
     iconClass: 'alert-red',
-    lat: -13.0001,
-    lng: -38.6702
+    lat: -12.992673, 
+    lng: -38.636963
   },
   {
     id: 2,
@@ -21,8 +21,8 @@ export const MOCK_ALERTS: Alert[] = [
     location: 'Coroa',
     status: 'Aberto',
     iconClass: 'alert-orange',
-    lat: -13.0055,
-    lng: -38.6760
+    lat: -13.000226, 
+    lng: -38.641539
   },
   {
     id: 3,
@@ -32,8 +32,8 @@ export const MOCK_ALERTS: Alert[] = [
     location: 'Baiacú',
     status: 'Aberto',
     iconClass: 'alert-yellow',
-    lat: -13.0120,
-    lng: -38.6805
+    lat: -12.995479, 
+    lng: -38.698850
   },
   {
     id: 4,
@@ -43,8 +43,8 @@ export const MOCK_ALERTS: Alert[] = [
     location: 'Barra Grande',
     status: 'Aberto',
     iconClass: 'alert-orange',
-    lat: -13.0083,
-    lng: -38.6750
+    lat: -13.040959, 
+    lng: -38.683553
   },
   {
     id: 5,
@@ -54,8 +54,8 @@ export const MOCK_ALERTS: Alert[] = [
     location: 'Barra do Gil',
     status: 'Aberto',
     iconClass: 'alert-red',
-    lat: -13.0022,
-    lng: -38.6725
+    lat: -12.993117, 
+    lng: -38.638478
   },
   {
     id: 6,
@@ -65,8 +65,8 @@ export const MOCK_ALERTS: Alert[] = [
     location: 'Mar Grande',
     status: 'Aberto',
     iconClass: 'alert-blue',
-    lat: -13.0065,
-    lng: -38.6770
+    lat: -12.959692, 
+    lng: -38.606530
   },
   {
     id: 7,
@@ -76,8 +76,8 @@ export const MOCK_ALERTS: Alert[] = [
     location: 'Ilhota',
     status: 'Aberto',
     iconClass: 'alert-orange',
-    lat: -13.0110,
-    lng: -38.6790
+    lat: -12.966416, 
+    lng: -38.614822
   },
   {
     id: 8,
@@ -87,8 +87,8 @@ export const MOCK_ALERTS: Alert[] = [
     location: 'Gamboa',
     status: 'Aberto',
     iconClass: 'alert-yellow',
-    lat: -13.0090,
-    lng: -38.6760
+    lat: -12.974051, 
+    lng: -38.614791
   },
   {
     id: 9,
@@ -98,8 +98,8 @@ export const MOCK_ALERTS: Alert[] = [
     location: 'Taipoca',
     status: 'Aberto',
     iconClass: 'alert-red',
-    lat: -13.0030,
-    lng: -38.6730
+    lat: -12.997843, 
+    lng: -38.639767
   },
   {
     id: 10,
@@ -109,7 +109,7 @@ export const MOCK_ALERTS: Alert[] = [
     location: 'Mar Grande',
     status: 'Aberto',
     iconClass: 'alert-gray',
-    lat: -13.0010,
-    lng: -38.6710
+    lat: -12.953303, 
+    lng: -38.611124
   }
 ];
