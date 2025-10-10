@@ -121,13 +121,20 @@ export class CadastroAlertas implements AfterViewInit {
     } else {
       alert('Por favor, preencha todos os campos corretamente.');
     }
+    this.insertMockAlerts();
   }
 
   insertMockAlerts() {
-    // Salva todos os mocks no localStorage
-    //localStorage.clear();
-    localStorage.setItem('alerts', JSON.stringify(MOCK_ALERTS));
-    alert('10 alertas de exemplos inseridos com sucesso!');
-  }
+    // Recupera alertas existentes no localStorage (ou cria lista vazia)
+    const existingAlerts = JSON.parse(localStorage.getItem('alerts') || '[]');
+  
+    // Adiciona os novos mock alerts
+    const updatedAlerts = [...existingAlerts, ...MOCK_ALERTS];
+  
+    // Salva a lista combinada de volta no localStorage
+    localStorage.setItem('alerts', JSON.stringify(updatedAlerts));
+  
+    alert(`${MOCK_ALERTS.length} alertas de exemplo inseridos com sucesso!`);
+  }  
 
 }
