@@ -52,8 +52,11 @@
 
 .nav li a:hover,
 .nav li a.active {
-    color: #000;
-    border-bottom-color: #4a90e2;
+  color: #ffffff;
+  background-color: #da8a50;   /* Azul de destaque */
+  border-bottom-color: #da8a50;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 /* Ícone de logout */

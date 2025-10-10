@@ -16,7 +16,7 @@ export class ManageAlertsComponent implements OnInit {
   statusOptions: string[] = ['Aberto', 'Em andamento', 'Resolvido'];
 
   // Paginação
-  itemsPerPage = 8;
+  itemsPerPage = 10;
   currentPage = 1;
   totalPages = 1;
 
