@@ -9,7 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'app-cadastro-alertas',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatSelectModule ],
+  imports: [CommonModule, FormsModule, MatSelectModule],
   templateUrl: './cadastro-alertas.html',
   styleUrls: ['./cadastro-alertas.css']
 })
@@ -53,8 +53,13 @@ export class CadastroAlertas implements AfterViewInit {
     'Outro'
   ];
 
+  // 🔸 Controle do modal
+  showModal = false;
+  modalMessage = '';
 
-  constructor(private alertService: AlertService) { this.sortAlertTypes() }
+  constructor(private alertService: AlertService) {
+    this.sortAlertTypes();
+  }
 
   sortAlertTypes() {
     this.alertTypes = this.alertTypes.filter(t => t !== '').sort((a, b) => a.localeCompare(b));
@@ -78,8 +83,8 @@ export class CadastroAlertas implements AfterViewInit {
     const autocomplete = new google.maps.places.Autocomplete(
       this.locationInput.nativeElement,
       {
-        types: ['(regions)'], // bairros/regiões
-        componentRestrictions: { country: 'BR' } // só Brasil
+        types: ['(regions)'],
+        componentRestrictions: { country: 'BR' }
       }
     );
 
@@ -90,24 +95,30 @@ export class CadastroAlertas implements AfterViewInit {
         this.newAlert.lng = place.geometry.location.lng();
         this.newAlert.location = place.name || place.formatted_address || '';
       } else {
-        this.newAlert.lat =  -12.991415;
+        this.newAlert.lat = -12.991415;
         this.newAlert.lng = -38.659188;
         this.newAlert.location = '';
-        alert('Selecione um bairro válido da lista de sugestões.');
+        this.showCustomModal('Selecione um bairro válido da lista de sugestões.');
       }
     });
   }
 
-  onSubmit(form: NgForm) {
-    /*if (!this.newAlert.lat || !this.newAlert.lng) {
-      alert('Por favor, selecione um bairro válido da lista de sugestões.');
-      return;
-    }*/
+  // 🔸 Exibe o modal customizado
+  showCustomModal(message: string) {
+    this.modalMessage = message;
+    this.showModal = true;
+  }
 
+  // 🔸 Fecha o modal
+  closeModal() {
+    this.showModal = false;
+  }
+
+  onSubmit(form: NgForm) {
     if (form.valid) {
       this.newAlert.id = Date.now();
       this.alertService.addAlert(this.newAlert);
-      alert('Alerta cadastrado com sucesso!');
+      this.showCustomModal('Alerta cadastrado com sucesso!');
 
       form.resetForm({
         type: 'Acúmulo de entulho',
@@ -116,25 +127,18 @@ export class CadastroAlertas implements AfterViewInit {
         location: ''
       });
 
-      this.newAlert.lat =  -12.991415;
+      this.newAlert.lat = -12.991415;
       this.newAlert.lng = -38.659188;
     } else {
-      alert('Por favor, preencha todos os campos corretamente.');
+      this.showCustomModal('Por favor, preencha todos os campos corretamente.');
     }
+
     this.insertMockAlerts();
   }
 
   insertMockAlerts() {
-    // Recupera alertas existentes no localStorage (ou cria lista vazia)
     const existingAlerts = JSON.parse(localStorage.getItem('alerts') || '[]');
-  
-    // Adiciona os novos mock alerts
     const updatedAlerts = [...existingAlerts, ...MOCK_ALERTS];
-  
-    // Salva a lista combinada de volta no localStorage
     localStorage.setItem('alerts', JSON.stringify(updatedAlerts));
-  
-    alert(`${MOCK_ALERTS.length} alertas de exemplo inseridos com sucesso!`);
-  }  
-
+  }
 }

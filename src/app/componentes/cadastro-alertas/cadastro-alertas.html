@@ -6,38 +6,63 @@
       <!-- Tipo de denúncia -->
       <label for="type">Tipo de Denúncia:</label>
       <mat-form-field appearance="outline" class="full-width-input" aria-placeholder="Selecione o tipo">
-        <mat-select id="type" [(ngModel)]="newAlert.type" name="type" required placeholder="Selecione o tipo"
-          panelClass="force-dropdown-down"> <mat-option *ngFor="let t of alertTypes" [value]="t">{{ t }}</mat-option>
+        <mat-select
+          id="type"
+          [(ngModel)]="newAlert.type"
+          name="type"
+          required
+          placeholder="Selecione o tipo"
+          panelClass="force-dropdown-down"
+        >
+          <mat-option *ngFor="let t of alertTypes" [value]="t">{{ t }}</mat-option>
         </mat-select>
       </mat-form-field>
-      
+
       <!-- Título -->
       <label for="title">Título:</label>
       <input type="text" id="title" [(ngModel)]="newAlert.title" name="title" required />
 
       <!-- Descrição -->
       <label for="description">Descrição:</label>
-      <textarea id="description" [(ngModel)]="newAlert.description" name="description" rows="4" required></textarea>
+      <textarea
+        id="description"
+        [(ngModel)]="newAlert.description"
+        name="description"
+        rows="4"
+        required
+      ></textarea>
 
       <!-- Local com autocomplete -->
       <label for="location">Local (bairro):</label>
-      <input type="text" id="location" #locationInput [(ngModel)]="newAlert.location" name="location" required
-        placeholder="Digite e selecione um bairro" autocomplete="off" />
-
-
+      <input
+        type="text"
+        id="location"
+        #locationInput
+        [(ngModel)]="newAlert.location"
+        name="location"
+        required
+        placeholder="Digite e selecione um bairro"
+        autocomplete="off"
+      />
 
       <!-- Status fixo -->
       <input type="hidden" [(ngModel)]="newAlert.status" name="status" value="Aberto" />
 
-
-      <!-- ... restante do formulário ... -->
-
       <!-- Botões -->
       <div class="button-group">
-       <!-- <button type="button" (click)="insertMockAlerts()">Teste</button>-->
         <button type="submit" [disabled]="alertForm.invalid">Cadastrar</button>
       </div>
-
     </form>
+  </div>
+</div>
+
+<!-- ============================ -->
+<!-- MODAL DE CONFIRMAÇÃO CUSTOM -->
+<!-- ============================ -->
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <h2>ItapAlert</h2>
+    <p>{{ modalMessage }}</p>
+    <button (click)="closeModal()">OK</button>
   </div>
 </div>
