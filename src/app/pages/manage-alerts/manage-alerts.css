@@ -1,3 +1,5 @@
+/* src/app/pages/manage-alerts/manage-alerts.component.css */
+
 .manage-container {
   padding: 24px;
   border-radius: 16px;
@@ -5,29 +7,14 @@
   font-family: Arial, sans-serif;
   width: 100%;
   max-width: 1600px;
-
-  /* Altura mínima ocupa a tela inteira menos header/footer */
   min-height: calc(100vh - 160px); 
-  height: auto; /* cresce conforme o conteúdo */
-  
   box-sizing: border-box;
   margin: 20px auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
-  /* Scroll interno para conteúdo longo */
   overflow: hidden;
 }
-
-/* Wrapper da tabela com scroll interno */
-.alerts-table-wrapper {
-  flex-grow: 1;
-  overflow-y: auto;
-  max-height: calc(100% - 80px); /* altura para título/paginação */
-}
-
-
 
 h2 {
   margin-bottom: 16px;
@@ -36,11 +23,15 @@ h2 {
   font-size: 1.5rem;
 }
 
+/* Wrapper da tabela com scroll interno horizontal se necessário */
 .alerts-table-wrapper {
   flex-grow: 1;
-  overflow-y: auto; /* scroll vertical quando necessário */
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: calc(100% - 80px);
 }
 
+/* Tabela */
 .alerts-table {
   background-color: #fff;
   width: 100%;
@@ -58,18 +49,19 @@ h2 {
   word-wrap: break-word;
 }
 
+/* Largura das colunas */
 .alerts-table th:nth-child(1),
-.alerts-table td:nth-child(1) { width: 15%; }
+.alerts-table td:nth-child(1) { width: 15%; } /* Tipo */
 .alerts-table th:nth-child(2),
-.alerts-table td:nth-child(2) { width: 35%; }
+.alerts-table td:nth-child(2) { width: 35%; } /* Título/descrição */
 .alerts-table th:nth-child(3),
-.alerts-table td:nth-child(3) { width: 15%; }
+.alerts-table td:nth-child(3) { width: 15%; } /* Local */
 .alerts-table th:nth-child(4),
-.alerts-table td:nth-child(4) { width: 10%; }
+.alerts-table td:nth-child(4) { width: 10%; } /* Status */
 .alerts-table th:nth-child(5),
-.alerts-table td:nth-child(5) { width: 15%; }
+.alerts-table td:nth-child(5) { width: 15%; } /* Data */
 .alerts-table th:nth-child(6),
-.alerts-table td:nth-child(6) { width: 10%; }
+.alerts-table td:nth-child(6) { width: 10%; } /* Ações */
 
 .alerts-table th {
   background-color: #f5f5f5;
@@ -93,7 +85,9 @@ select {
   transition: transform 0.2s;
 }
 
-.delete-btn:hover { transform: scale(1.2); }
+.delete-btn:hover {
+  transform: scale(1.2);
+}
 
 .pagination {
   display: flex;
@@ -116,6 +110,79 @@ select {
   min-width: 100px;
 }
 
-.pagination button:hover:not(:disabled) { background-color: #e19b4f; }
-.pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
-.pagination span { font-size: 0.95rem; color: #333; }
+.pagination button:hover:not(:disabled) {
+  background-color: #e19b4f;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* ========================= */
+/* RESPONSIVIDADE           */
+/* ========================= */
+@media (max-width: 1200px) {
+  .alerts-table th,
+  .alerts-table td {
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .alerts-table th,
+  .alerts-table td {
+    font-size: 0.8rem;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .alerts-table th,
+  .alerts-table td {
+    font-size: 0.75rem;
+    padding: 4px 6px;
+  }
+
+  /* Ajuste de largura das colunas */
+  .alerts-table th:nth-child(2),
+  .alerts-table td:nth-child(2) { width: 40%; }
+  .alerts-table th:nth-child(1),
+  .alerts-table td:nth-child(1) { width: 20%; }
+  .alerts-table th:nth-child(3),
+  .alerts-table td:nth-child(3) { width: 15%; }
+  .alerts-table th:nth-child(4),
+  .alerts-table td:nth-child(4) { width: 10%; }
+  .alerts-table th:nth-child(5),
+  .alerts-table td:nth-child(5) { width: 10%; }
+  .alerts-table th:nth-child(6),
+  .alerts-table td:nth-child(6) { width: 5%; }
+
+  /* Ocultar colunas menos importantes para telas pequenas */
+  .alerts-table th:nth-child(4),
+  .alerts-table td:nth-child(4),
+  .alerts-table th:nth-child(5),
+  .alerts-table td:nth-child(5) {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .alerts-table th,
+  .alerts-table td {
+    font-size: 0.7rem;
+    padding: 3px 5px;
+  }
+
+  /* Coluna de ações menor */
+  .alerts-table th:nth-child(6),
+  .alerts-table td:nth-child(6) {
+    font-size: 0.65rem;
+  }
+}
