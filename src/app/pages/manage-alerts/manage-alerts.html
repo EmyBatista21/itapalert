@@ -1,43 +1,40 @@
 <div class="manage-container">
   <h2>Gerenciamento de Alertas</h2>
 
-  <table class="alerts-table" *ngIf="pagedAlerts.length > 0; else noAlerts">
-    <thead>
-      <tr>
-        <th>Título</th>
-        <th>Descrição</th>
-        <th>Bairro</th>
-        <th>Tipo</th>
-        <th>Status</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let alert of pagedAlerts">
-        <td data-label="Título">{{ alert.title }}</td>
-        <td data-label="Descrição">{{ alert.description }}</td>
-        <td data-label="Bairro">{{ alert.location }}</td>
-        <td data-label="Tipo">{{ alert.type }}</td>
-        <td data-label="Status">
-          <select [(ngModel)]="alert.status" (change)="updateStatus(alert, alert.status)">
-            <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
-          </select>
-        </td>
-        <td data-label="Ações">
-          <button class="delete-btn" (click)="deleteAlert(alert.id)">🗑️</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="alerts-table-wrapper">
+    <table class="alerts-table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Descrição</th>
+          <th>Bairro</th>
+          <th>Tipo</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let alert of pagedAlerts">
+          <td>{{ alert.title }}</td>
+          <td>{{ alert.description }}</td>
+          <td>{{ alert.location }}</td>
+          <td>{{ alert.type }}</td>
+          <td>
+            <select [(ngModel)]="alert.status" (change)="updateStatus(alert, alert.status)">
+              <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+            </select>
+          </td>
+          <td>
+            <button class="delete-btn" (click)="deleteAlert(alert.id)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <!-- Paginação -->
   <div class="pagination" *ngIf="totalPages > 1">
     <button (click)="prevPage()" [disabled]="currentPage === 1">← Anterior</button>
     <span>Página {{ currentPage }} de {{ totalPages }}</span>
     <button (click)="nextPage()" [disabled]="currentPage === totalPages">Próxima →</button>
   </div>
-
-  <ng-template #noAlerts>
-    <p>Nenhum alerta cadastrado.</p>
-  </ng-template>
 </div>

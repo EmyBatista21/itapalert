@@ -10,7 +10,6 @@ export class AuthService {
     const allowedUsers = [
       { username: 'admin', password: '123456' },
       { username: 'user', password: 'senha' }
-
     ];
 
     const user = allowedUsers.find(u => u.username === username && u.password === password);
@@ -18,6 +17,7 @@ export class AuthService {
     if (user) {
       this.loggedIn = true;
       localStorage.setItem('loggedIn', 'true'); // mantém login
+      localStorage.setItem('username', username); // guarda o usuário logado
       return true;
     }
 
@@ -27,10 +27,15 @@ export class AuthService {
   logout() {
     this.loggedIn = false;
     localStorage.removeItem('loggedIn');
+    localStorage.removeItem('username');
   }
 
   isLoggedIn(): boolean {
-    // Retorna true apenas se fez login
     return this.loggedIn || localStorage.getItem('loggedIn') === 'true';
+  }
+
+  isAdmin(): boolean {
+    const username = localStorage.getItem('username');
+    return this.isLoggedIn() && username === 'admin';
   }
 }

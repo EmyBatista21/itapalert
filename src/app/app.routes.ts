@@ -8,6 +8,7 @@ import { Cadastro } from "./pages/cadastro/cadastro";
 import { Sobre } from "./pages/sobre/sobre";
 import { ManageAlertsComponent } from "./pages/manage-alerts/manage-alerts";
 import { MapComponent } from "./componentes/map-component/map-component";
+import { AdminGuard } from "./guards/auth.guard/admin.guard";
 
 export const routes: Routes = [
   // Página de Login
@@ -37,7 +38,7 @@ export const routes: Routes = [
   {
     path: 'atualizar',
     component: ManageAlertsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AdminGuard]
   },
 
   // Cadastro de Denúncias (protegida)

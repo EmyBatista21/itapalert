@@ -1,6 +1,6 @@
 /* Header principal */
 .header {
-    background-color: #f8b467;
+    background-color: #E98236;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 1rem 2rem;
     font-family: Arial, sans-serif;
@@ -38,11 +38,12 @@
 
 /* Todos os links da nav (inclusive logout) */
 .nav li a {
+    font-style: unset;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 500;
-    color: #555;
+    font-weight: bold;
+    color: #000000;
     text-decoration: none;
     padding: 0.5rem 0;
     border-bottom: 2px solid transparent;

@@ -13,22 +13,35 @@ export class Cadastro {
   showLGPD = false;
   acceptedLGPD = false;
 
-  // Abre o modal antes de enviar o cadastro
   openLGPDModal(form: NgForm) {
-    if (form.valid) {
-      this.showLGPD = true;
-    } else {
+    if (!form.valid) {
       alert('Preencha todos os campos obrigatórios antes de prosseguir.');
+      return;
     }
+
+    const { email, password, confirmPassword } = form.value;
+
+    // Valida e-mail
+    if (!this.isValidEmail(email)) {
+      alert('Digite um e-mail válido.');
+      return;
+    }
+
+    // Verifica se a senha e a confirmação coincidem
+    if (password !== confirmPassword) {
+      alert('As senhas não coincidem.');
+      return;
+    }
+
+    // Se tudo estiver correto, abre o modal LGPD
+    this.showLGPD = true;
   }
 
-  // Fecha o modal sem enviar
   closeLGPDModal() {
     this.showLGPD = false;
     this.acceptedLGPD = false;
   }
 
-  // Confirma LGPD e envia o cadastro
   confirmLGPD(form: NgForm) {
     if (this.acceptedLGPD) {
       console.log('Dados de cadastro:', form.value);
@@ -36,5 +49,10 @@ export class Cadastro {
       this.closeLGPDModal();
       form.resetForm();
     }
+  }
+
+  private isValidEmail(email: string): boolean {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
   }
 }

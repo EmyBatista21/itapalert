@@ -5,7 +5,6 @@
   align-items: center;
   min-height: calc(100vh - 120px); /* garante centralização vertical sem sobrepor o header/footer */
   padding: 20px;
-  background-color: #f0f2f5;
   box-sizing: border-box;
 }
 
@@ -38,6 +37,7 @@
   color: #555;
 }
 
+
 .cadastro-container input,
 .cadastro-container select,
 .cadastro-container textarea {
@@ -52,6 +52,7 @@
   box-sizing: border-box;
 }
 
+
 .cadastro-container input:focus,
 .cadastro-container select:focus,
 .cadastro-container textarea:focus {
@@ -60,8 +61,15 @@
   outline: none;
 }
 
-/* Botão */
+.button-group {
+  display: flex;
+  gap: 10px; /* espaço entre os botões */
+  margin-top: 10px;
+}
+
+/* Mantendo estilo dos botões */
 .cadastro-container button {
+  flex: 1; /* faz os botões terem a mesma largura */
   padding: 12px;
   background-color: #007bff;
   color: white;
@@ -76,6 +84,7 @@
 .cadastro-container button:hover {
   background-color: #0056b3;
 }
+
 
 /* Responsividade */
 @media (max-height: 700px) {

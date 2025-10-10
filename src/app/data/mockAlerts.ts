@@ -1,206 +1,115 @@
-// src/app/data/mock-alerts.ts
-import { Alert } from "../models/alert";
-
+// src/app/data/mockAlerts.ts
+import { Alert } from '../models/alert';
 
 export const MOCK_ALERTS: Alert[] = [
   {
     id: 1,
-    title: 'Buraco grande em via principal',
-    description: 'Há um buraco profundo atrapalhando o tráfego na rua principal do bairro Mar Grande.',
-    type: 'Buraco em via pública',
-    location: 'Mar Grande',
+    title: 'Acúmulo de entulho',
+    description: 'Entulho deixado ao lado escola.',
+    type: 'Acúmulo de entulho',
+    location: 'Barra do Gil',
     status: 'Aberto',
-    lat: -12.9951,
-    lng: -38.6195
+    iconClass: 'alert-red',
+    lat: -13.0001,
+    lng: -38.6702
   },
   {
     id: 2,
-    title: 'Poste sem iluminação',
-    description: 'A rua está completamente escura devido a poste queimado.',
-    type: 'Falta de iluminação pública',
-    location: 'Barra Grande',
+    title: 'Calçada quebrada',
+    description: 'Pedestres estão se arriscando ao atravessar a rua.',
+    type: 'Calçada danificada',
+    location: 'Coroa',
     status: 'Aberto',
-    lat: -13.0042,
-    lng: -38.6189
+    iconClass: 'alert-orange',
+    lat: -13.0055,
+    lng: -38.6760
   },
   {
     id: 3,
-    title: 'Acúmulo de lixo próximo à praia',
-    description: 'Grande quantidade de lixo acumulado próximo ao calçadão da praia.',
-    type: 'Acúmulo de entulho',
-    location: 'Cacha Pregos',
+    title: 'Semáforo apagado',
+    description: 'Semáforo do cruzamento principal está apagado há dias.',
+    type: 'Semáforo quebrado',
+    location: 'Baiacú',
     status: 'Aberto',
-    lat: -13.0863,
-    lng: -38.6831
+    iconClass: 'alert-yellow',
+    lat: -13.0120,
+    lng: -38.6805
   },
   {
     id: 4,
-    title: 'Calçada danificada em frente à escola',
-    description: 'O piso da calçada está quebrado e causa risco aos pedestres.',
-    type: 'Calçada danificada',
-    location: 'Jiribatuba',
+    title: 'Acúmulo de entulho',
+    description: 'Entulho deixado em terreno baldio próximo à praça.',
+    type: 'Acúmulo de entulho',
+    location: 'Barra Grande',
     status: 'Aberto',
-    lat: -13.0457,
-    lng: -38.6813
+    iconClass: 'alert-orange',
+    lat: -13.0083,
+    lng: -38.6750
   },
   {
     id: 5,
-    title: 'Foco de dengue em terreno baldio',
-    description: 'Há água parada acumulada em terreno abandonado.',
-    type: 'Água parada (foco de dengue)',
-    location: 'Ilha de Itaparica',
+    title: 'Poste queimado',
+    description: 'Poste de iluminação pública queimado, deixando a rua escura.',
+    type: 'Poste queimado',
+    location: 'Barra do Gil',
     status: 'Aberto',
-    lat: -12.9615,
-    lng: -38.6211
+    iconClass: 'alert-red',
+    lat: -13.0022,
+    lng: -38.6725
   },
   {
     id: 6,
-    title: 'Semáforo fora de funcionamento',
-    description: 'O semáforo principal não está funcionando e causa confusão no trânsito.',
-    type: 'Semáforo quebrado',
+    title: 'Alagamento após chuva',
+    description: 'Rua alagada dificultando a passagem de veículos e pedestres.',
+    type: 'Alagamento',
     location: 'Mar Grande',
     status: 'Aberto',
-    lat: -12.9962,
-    lng: -38.6208
+    iconClass: 'alert-blue',
+    lat: -13.0065,
+    lng: -38.6770
   },
   {
     id: 7,
-    title: 'Esgoto vazando em via pública',
-    description: 'Esgoto a céu aberto causando mau cheiro e riscos sanitários.',
-    type: 'Esgoto a céu aberto',
+    title: 'Lixeira pública danificada',
+    description: 'Lixeira quebrada acumulando lixo espalhado pelo bairro.',
+    type: 'Lixeira pública danificada',
     location: 'Ilhota',
     status: 'Aberto',
-    lat: -13.0174,
-    lng: -38.6623
+    iconClass: 'alert-orange',
+    lat: -13.0110,
+    lng: -38.6790
   },
   {
     id: 8,
-    title: 'Lixeira pública quebrada',
-    description: 'As lixeiras da praça estão danificadas e sem tampa.',
-    type: 'Lixeira pública danificada',
-    location: 'Barra do Gil',
+    title: 'Praça mal conservada',
+    description: 'Praça sem manutenção, bancos quebrados e gramado alto.',
+    type: 'Praça mal conservada',
+    location: 'Gamboa',
     status: 'Aberto',
-    lat: -13.0131,
-    lng: -38.6558
+    iconClass: 'alert-yellow',
+    lat: -13.0090,
+    lng: -38.6760
   },
   {
     id: 9,
-    title: 'Desmatamento irregular em área verde',
-    description: 'Moradores relatam corte ilegal de árvores em área preservada.',
-    type: 'Desmatamento irregular',
-    location: 'Conceição',
+    title: 'Falta de iluminação pública',
+    description: 'Rua completamente escura à noite, perigosa para pedestres.',
+    type: 'Falta de iluminação pública',
+    location: 'Taipoca',
     status: 'Aberto',
-    lat: -13.0354,
-    lng: -38.6901
+    iconClass: 'alert-red',
+    lat: -13.0030,
+    lng: -38.6730
   },
   {
     id: 10,
-    title: 'Praça abandonada com brinquedos quebrados',
-    description: 'A praça do bairro está abandonada e brinquedos estão quebrados.',
-    type: 'Brinquedo quebrado em parquinho',
-    location: 'Berlinque',
-    status: 'Aberto',
-    lat: -13.0344,
-    lng: -38.6657
-  },
-  {
-    id: 11,
-    title: 'Coleta de lixo irregular',
-    description: 'O caminhão de coleta não passa há mais de uma semana.',
-    type: 'Coleta de lixo irregular',
-    location: 'Aratuba',
-    status: 'Aberto',
-    lat: -13.0815,
-    lng: -38.6952
-  },
-  {
-    id: 12,
-    title: 'Erosão avançando sobre calçada',
-    description: 'Erosão está comprometendo o acesso de pedestres.',
-    type: 'Erosão',
-    location: 'Cacha Pregos',
-    status: 'Aberto',
-    lat: -13.0872,
-    lng: -38.6821
-  },
-  {
-    id: 13,
-    title: 'Ponto de ônibus sem abrigo',
-    description: 'Os usuários ficam expostos ao sol e à chuva enquanto aguardam o transporte.',
-    type: 'Ponto de ônibus sem abrigo',
+    title: 'Poluição Sonora',
+    description: 'Todo domingo fazer paredão após às 22h',
+    type: 'Outro',
     location: 'Mar Grande',
     status: 'Aberto',
-    lat: -12.9985,
-    lng: -38.6223
-  },
-  {
-    id: 14,
-    title: 'Poluição sonora em bar noturno',
-    description: 'O som alto ultrapassa o horário permitido e incomoda moradores.',
-    type: 'Poluição sonora',
-    location: 'Barra Grande',
-    status: 'Aberto',
-    lat: -13.0048,
-    lng: -38.6193
-  },
-  {
-    id: 15,
-    title: 'Queimada em terreno baldio',
-    description: 'Moradores relatam fumaça constante devido a queima de lixo.',
-    type: 'Queimada em terreno baldio',
-    location: 'Aratuba',
-    status: 'Aberto',
-    lat: -13.0798,
-    lng: -38.6912
-  },
-  {
-    id: 16,
-    title: 'Bueiro entupido causando alagamento',
-    description: 'Após chuvas, rua fica alagada devido a bueiro entupido.',
-    type: 'Bueiro entupido',
-    location: 'Ilhota',
-    status: 'Aberto',
-    lat: -13.0167,
-    lng: -38.6611
-  },
-  {
-    id: 17,
-    title: 'Sinalização de trânsito apagada',
-    description: 'Faixas de pedestre estão apagadas e dificultam travessia.',
-    type: 'Sinalização apagada',
-    location: 'Jiribatuba',
-    status: 'Aberto',
-    lat: -13.0462,
-    lng: -38.6824
-  },
-  {
-    id: 18,
-    title: 'Poste com risco de queda',
-    description: 'Poste inclinado ameaçando cair sobre casas próximas.',
-    type: 'Poste queimado',
-    location: 'Berlinque',
-    status: 'Aberto',
-    lat: -13.0335,
-    lng: -38.6668
-  },
-  {
-    id: 19,
-    title: 'Vazamento de água em rua principal',
-    description: 'Água jorrando continuamente de cano estourado.',
-    type: 'Vazamento de água',
-    location: 'Mar Grande',
-    status: 'Aberto',
-    lat: -12.9977,
-    lng: -38.6202
-  },
-  {
-    id: 20,
-    title: 'Praça sem manutenção',
-    description: 'Gramado alto e bancos quebrados na praça do bairro.',
-    type: 'Praça mal conservada',
-    location: 'Barra do Gil',
-    status: 'Aberto',
-    lat: -13.0119,
-    lng: -38.6543
+    iconClass: 'alert-gray',
+    lat: -13.0010,
+    lng: -38.6710
   }
 ];

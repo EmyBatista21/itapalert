@@ -2,120 +2,99 @@
 /* HOME PAGE RESPONSIVA */
 /* ========================= */
 .home-page-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    width: 95%;
-    max-width: 1600px;
-    min-height: calc(100vh - 60px); /* ocupa toda a tela sem sobrepor header/footer */
-    margin: 20px auto;
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 95%;
+  max-width: 1600px;
+  height: calc(100vh - 60px); /* altura total da tela menos header/footer */
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.map-area {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+/* MAPA */
+app-map {
+  flex: 2;
+  min-width: 60%;
+  height: 100%; /* pega altura do container pai */
+  border-radius: 8px 0 0 8px;
+}
+
+/* PAINEL DE ALERTAS */
+app-alerts-panel {
+  flex: 1;
+  min-width: 300px;
+  height: 100%; /* pega altura do container pai */
+  border-left: 1px solid var(--border-light);
+  border-radius: 0 8px 8px 0;
+  overflow-y: auto; /* scroll interno se necessário */
+  background-color: #fafafa;
+}
+
+/* ========================= */
+/* TELAS PEQUENAS (CEL/ TABLET) */
+/* ========================= */
+@media (max-width: 768px) {
   .map-area {
-    display: flex;
-    flex: 1;
-    width: 100%;
+    flex-direction: column;
     align-items: stretch;
-    justify-content: center;
   }
-  
-  /* MAPA */
+
   app-map {
-    flex: 2;
-    min-width: 60%;
-    height: 100%;
-    border-radius: 8px 0 0 8px;
+    width: 100%;
+    height: 50vh; /* altura proporcional à tela */
+    border-radius: 0;
   }
-  
-  /* PAINEL DE ALERTAS */
+
+  app-alerts-panel {
+    width: 100%;
+    height: 50vh;
+    border-left: none;
+    border-top: 1px solid var(--border-light);
+    border-radius: 0;
+  }
+}
+
+/* ========================= */
+/* TELAS ULTRAWIDE (LARGURA >1800px) */
+/* ========================= */
+@media (min-width: 1800px) {
+  app-map {
+    flex: 3;
+  }
+
   app-alerts-panel {
     flex: 1;
-    min-width: 300px;
-    height: 100%;
-    border-left: 1px solid var(--border-light);
-    border-radius: 0 8px 8px 0;
-    overflow-y: auto;
-    background-color: #fafafa;
   }
-  
-  /* ========================= */
-  /* TELAS PEQUENAS (CEL/ TABLET) */
-  /* ========================= */
-  @media (max-width: 768px) {
-    .map-area {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  
-    app-map {
-      width: 100%;
-      height: 50vh; /* altura proporcional à tela */
-      border-radius: 0;
-    }
-  
-    app-alerts-panel {
-      width: 100%;
-      border-left: none;
-      border-top: 1px solid var(--border-light);
-      border-radius: 0;
-      height: auto;
-    }
+}
+
+/* ========================= */
+/* TELAS MUITO BAIXAS (NOTEBOOKS / SPLIT SCREEN) */
+/* ========================= */
+@media (max-height: 600px) {
+  .home-page-container {
+    flex-direction: column;
+    padding-top: 20px;
+    height: 100vh;
   }
-  
-  /* ========================= */
-  /* TELAS MUITO ALTAS (VERTICAIS) */
-  /* ========================= */
-  @media (min-height: 900px) {
-    .home-page-container {
-      padding: 40px 0;
-      min-height: 100vh;
-    }
-  
-    app-map,
-    app-alerts-panel {
-      height: auto;
-    }
+
+  app-map {
+    height: 35vh;
   }
-  
-  /* ========================= */
-  /* TELAS ULTRAWIDE (LARGURA >1800px) */
-  /* ========================= */
-  @media (min-width: 1800px) {
-    .home-page-container {
-      max-width: 1800px;
-    }
-  
-    app-map {
-      flex: 3;
-    }
-  
-    app-alerts-panel {
-      flex: 1;
-    }
+
+  app-alerts-panel {
+    height: 65vh; /* ocupa o restante do espaço */
   }
-  
-  /* ========================= */
-  /* TELAS MUITO BAIXAS (NOTEBOOKS / SPLIT SCREEN) */
-  /* ========================= */
-  @media (max-height: 600px) {
-    .home-page-container {
-      flex-direction: column;
-      padding-top: 20px;
-      min-height: 100vh;
-      align-items: flex-start;
-    }
-  
-    app-map {
-      height: 35vh;
-    }
-  
-    app-alerts-panel {
-      height: auto;
-    }
-  }
-  
+}

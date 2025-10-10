@@ -6,7 +6,7 @@ export interface Alert {
 
   // 🔹 Tipos de problemas comunitários (sem envolver violência ou tráfico)
   type:
-    | ''
+    ''
     | 'Buraco em via pública'
     | 'Falta de pavimentação'
     | 'Calçada danificada'
@@ -24,20 +24,10 @@ export interface Alert {
     | 'Bueiro entupido'
     | 'Desmatamento irregular'
     | 'Queimada em terreno baldio'
-    | 'Poluição sonora'
-    | 'Poluição visual'
-    | 'Descarte de lixo em área verde'
-    | 'Animais abandonados'
     | 'Praça mal conservada'
     | 'Brinquedo quebrado em parquinho'
-    | 'Posto de saúde precário'
-    | 'Escola pública sem manutenção'
-    | 'Falta de acessibilidade'
     | 'Ponto de ônibus sem abrigo'
     | 'Água parada (foco de dengue)'
-    | 'Falta de coleta de esgoto'
-    | 'Vazamento de esgoto'
-    | 'Mau cheiro em via pública'
     | 'Outro';
 
   location: string; // Bairro ou local do alerta

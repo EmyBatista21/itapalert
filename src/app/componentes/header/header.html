@@ -14,7 +14,18 @@
     <!-- Navegação -->
     <nav class="nav" [class.open]="isMenuOpen">
       <ul>
-        <ng-container *ngIf="isLoggedIn()">
+        <ng-container *ngIf="isLoggedIn() && !isAdmin()">
+          <li><a routerLink="/home" routerLinkActive="active" (click)="toggleMenu()">Home</a></li>
+          <li><a routerLink="/cadastroAlertas" routerLinkActive="active" (click)="toggleMenu()">Cadastro Alertas</a></li>
+          <li><a routerLink="/sobre" routerLinkActive="active" (click)="toggleMenu()">Sobre Nós</a></li>
+          <!-- Logout -->
+          <li class="logout-icon">
+            <a (click)="logout(); toggleMenu()">
+              <i class="bi bi-box-arrow-right"></i>
+            </a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="isAdmin()">
           <li><a routerLink="/home" routerLinkActive="active" (click)="toggleMenu()">Home</a></li>
           <li><a routerLink="/cadastroAlertas" routerLinkActive="active" (click)="toggleMenu()">Cadastro Alertas</a></li>
           <li><a routerLink="/atualizar" routerLinkActive="active" (click)="toggleMenu()">Atualizar</a></li>

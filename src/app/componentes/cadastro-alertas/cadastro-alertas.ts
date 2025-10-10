@@ -4,11 +4,12 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { AlertService } from '../../service/alert-service';
 import { Alert } from '../../models/alert';
 import { MOCK_ALERTS } from '../../data/mockAlerts';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-cadastro-alertas',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatSelectModule ],
   templateUrl: './cadastro-alertas.html',
   styleUrls: ['./cadastro-alertas.css']
 })
@@ -28,20 +29,36 @@ export class CadastroAlertas implements AfterViewInit {
   };
 
   alertTypes: string[] = [
-    'Água acumulada',
-    'Animal abandonado',
-    'Barulho excessivo',
-    'Buraco',
-    'Entulho',
-    'Lixo',
-    'Esgoto',
-    'Iluminação',
-    'Poste Queimado',
-    'Terreno abandonado',
+    'Buraco em via pública',
+    'Falta de pavimentação',
+    'Calçada danificada',
+    'Semáforo quebrado',
+    'Sinalização apagada',
+    'Erosão',
+    'Alagamento',
+    'Falta de iluminação pública',
+    'Poste queimado',
+    'Coleta de lixo irregular',
+    'Acúmulo de entulho',
+    'Lixeira pública danificada',
+    'Esgoto a céu aberto',
+    'Vazamento de água',
+    'Bueiro entupido',
+    'Desmatamento irregular',
+    'Queimada em terreno baldio',
+    'Praça mal conservada',
+    'Brinquedo quebrado em parquinho',
+    'Ponto de ônibus sem abrigo',
+    'Água parada (foco de dengue)',
     'Outro'
   ];
 
-  constructor(private alertService: AlertService) { }
+
+  constructor(private alertService: AlertService) { this.sortAlertTypes() }
+
+  sortAlertTypes() {
+    this.alertTypes = this.alertTypes.filter(t => t !== '').sort((a, b) => a.localeCompare(b));
+  }
 
   ngAfterViewInit(): void {
     // Espera até a API do Google estar pronta
@@ -93,7 +110,7 @@ export class CadastroAlertas implements AfterViewInit {
       alert('Alerta cadastrado com sucesso!');
 
       form.resetForm({
-        type: '',
+        type: 'Acúmulo de entulho',
         status: 'Aberto',
         iconClass: 'alert-red',
         location: ''
@@ -108,8 +125,9 @@ export class CadastroAlertas implements AfterViewInit {
 
   insertMockAlerts() {
     // Salva todos os mocks no localStorage
+    //localStorage.clear();
     localStorage.setItem('alerts', JSON.stringify(MOCK_ALERTS));
-    alert('20 alertas mock inseridos com sucesso!');
+    alert('10 alertas mock inseridos com sucesso!');
   }
 
 }

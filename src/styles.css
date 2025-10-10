@@ -19,7 +19,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: var(--background-light);
+    background-color: #F7E9D9;
     color: var(--text-dark);
 }
 
@@ -58,3 +58,6 @@ html, body {
   max-width: none !important;
   image-rendering: auto !important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
