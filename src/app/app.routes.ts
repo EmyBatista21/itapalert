@@ -56,7 +56,7 @@ export const routes: Routes = [
   // Rota padrão -> redireciona para login
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
 
