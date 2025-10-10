@@ -127,7 +127,7 @@ export class CadastroAlertas implements AfterViewInit {
     // Salva todos os mocks no localStorage
     //localStorage.clear();
     localStorage.setItem('alerts', JSON.stringify(MOCK_ALERTS));
-    alert('10 alertas mock inseridos com sucesso!');
+    alert('10 alertas de exemplos inseridos com sucesso!');
   }
 
 }
